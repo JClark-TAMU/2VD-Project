@@ -1,0 +1,33 @@
+<h1> Meet the Officers </h1>
+<p>
+Meet the officers in charge of 2VD. [Insert client's decription text here]
+</p>
+
+<p id="notice"><%= notice %></p>
+<h1>Officers</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Bio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td><%= user.bio %></td>
+        <td><%= link_to 'Show', user %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Users', users_path %>
+<%= link_to "Sign Out", destroy_admin_session_path %>

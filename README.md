@@ -20,6 +20,9 @@
 
     `docker run --rm -it --volume "$(pwd):/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000`
 
+  - for Mac M1
+    `docker run --rm -it --volume "$(pwd):/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 --platform linux/amd64 dmartinez05/ruby_rails_postgresql:latest`
+
 - Now run the following commands:
 
   `bundle install`
@@ -41,6 +44,8 @@ After Navigating to localhost:3000 on your browser you should see the 'Yay! You'
 `rails scaffold`
 
 `Keep on adding to this`
+
+`rails g controller <route> <name>`
 
 Staging: https://web2d-staging.herokuapp.com/
 Production: https://web2d.herokuapp.com/
