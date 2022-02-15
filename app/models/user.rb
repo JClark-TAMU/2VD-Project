@@ -5,5 +5,8 @@ class User < ApplicationRecord
     validates :bio, presence: true
 
     validate :isAdmin
-    validate :password
+    #Only officers
+    scope :officers, -> { where(isAdmin: true)}
+    #Only members
+    scope :members, -> { where("username != 'guest'")}
 end

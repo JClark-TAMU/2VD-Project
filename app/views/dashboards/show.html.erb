@@ -2,8 +2,8 @@
 <%= link_to "Sign Out", destroy_admin_session_path %>
 
 <div> 
-<h2>If you have not made an account yet, follow the link below. Please use the email you used to log in. </h1>
-<%= link_to 'Create Account Here', new_user_path %> <br>
+<h2>If you have not made an account yet and plan on being a member, follow the link below. </h1>
+<%= link_to 'Create Account Here', edit_user_path(User.find_by(email: current_admin.email)) %> <br>
 <h2>Otherwise, use this link to go to the index: </h2>
 <%= link_to 'Current Users', users_path %> <br>
 </div>
