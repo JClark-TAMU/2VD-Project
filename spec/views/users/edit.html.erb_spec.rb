@@ -18,8 +18,6 @@ RSpec.describe "users/edit", type: :view do
 
       assert_select "input[name=?]", "user[username]"
 
-      assert_select "input[name=?]", "user[email]"
-
       assert_select "input[name=?]", "user[isAdmin]"
 
       assert_select "input[name=?]", "user[role]"

@@ -7,7 +7,9 @@
     <tr>
       <th>Username</th>
       <th>Email</th>
-      <th>Isadmin</th>
+      <% if User.find_by(email: current_admin.email).isAdmin %>
+        <th>Isadmin</th>
+      <% end %>
       <th>Role</th>
       <th>Bio</th>
       <th colspan="3"></th>
@@ -19,12 +21,16 @@
       <tr>
         <td><%= link_to user.username, user %></td>
         <td><%= user.email %></td>
-        <td><%= user.isAdmin %></td>
+        <% if User.find_by(email: current_admin.email).isAdmin %>
+          <td><%= user.isAdmin %></td>
+        <% end %>
         <td><%= user.role %></td>
         <td><%= user.bio %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show Profile', user %></td>
+        <% if User.find_by(email: current_admin.email).isAdmin %>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,6 +38,6 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
 <%= link_to 'Officers', officer_path %>
+<%= link_to "Back to Dashboard", root_path %>
 <%= link_to "Sign Out", destroy_admin_session_path %>
