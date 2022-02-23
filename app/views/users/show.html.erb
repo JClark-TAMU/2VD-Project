@@ -4,9 +4,11 @@
 
 <div class="flex-container">
 
-  <div class="flex-child image">
-    <img src="https://freerangestock.com/sample/120147/business-man-profile-vector.jpg" alt="profile-image" style="width:300px">
-  </div>
+  <% unless @user.avatar == nil %>
+    <div class="flex-child image">
+      <%= image_tag(@user.avatar, class: 'avatar_img', style: 'width:300px') %>
+    </div>
+  <% end %>
 
   <div class="flex-child words">
     <p class="username">
