@@ -67,8 +67,9 @@ OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
   'provider' => 'google_oauth2',
   'uid' => '123545',
   'info' => {
-    'name' => 'mockuser',
-    'email' => 'britwiz@tamu.edu'
+    'full_name' => 'mockuser',
+    'email' => 'britwiz@tamu.edu',
+    'avatar_url' => 'https://lh3.googleusercontent.com/a/AATXAJwm1tjyLpwpV9m5Szg2711oaS-VST5qaUo3z_8t=s96-c'
   },
   'credentials' => {
     'token' => 'mock_token',

@@ -17,14 +17,21 @@
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label :full_name %>
+    <%= form.text_field :full_name %>
   </div>
 
   <div class="field">
-    <%= form.label :isAdmin %>
-    <%= form.check_box :isAdmin %>
+    <%= form.label "Avatar Link" %>
+    <%= form.text_field :avatar %>
   </div>
+
+  <% if User.find_by(email: current_admin.email).isAdmin %>
+    <div class="field">
+      <%= form.label :isAdmin %>
+      <%= form.check_box :isAdmin %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :role %>
