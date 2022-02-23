@@ -18,12 +18,12 @@ RSpec.describe 'Going to the Officers page', type: :feature do
     expect(page).to have_content('Officers')
   end
   scenario 'officer appears' do
-    tempUser = User.create!(username: 'Froggers', password: '12345', email: 'gmail@gmail.com', isAdmin: 'True', role: 'Member', bio: 'I am a frog', portfolioID: '1')
+    tempUser = User.create!(username: 'Froggers', email: 'britwiz@tamu.edu', isAdmin: 'True', role: 'Member', bio: 'I am a frog', portfolioID: '1')
     visit officer_path
     expect(page).to have_content('I am a frog')
   end
   scenario 'standard member does not appear' do
-    tempUser = User.create!(username: 'Froggers', password: '12345', email: 'gmail@gmail.com', isAdmin: '', role: 'Member', bio: 'I am a frog', portfolioID: '1')
+    tempUser = User.create!(username: 'Froggers', email: 'britwiz@tamu.edu', isAdmin: '', role: 'Member', bio: 'I am a frog', portfolioID: '1')
     visit officer_path
     expect(page).not_to have_content('I am a frog')
   end
@@ -68,13 +68,6 @@ RSpec.describe 'Editing a user', type: :feature do
       click_on 'Update User'
       visit users_path
       expect(page).to have_content('Doggers')
-    end
-    scenario 'valid input isAdmin' do
-      tempUser = User.create!(username: 'Froggers', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
-      visit edit_user_path(tempUser)
-      check 'user_isAdmin'
-      visit users_path
-      expect(page).to have_content('true')
     end
     scenario 'valid input role' do
       tempUser = User.create!(username: 'Froggers', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
