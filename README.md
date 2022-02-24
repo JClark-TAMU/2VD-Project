@@ -29,13 +29,11 @@
 
   `rails webpacker:install`
 
-  `rails db:create`
-
-  `rails db:migrate`
+  `rails db:create && rails db:migrate`
 
 - To run the app:
 
-  `rails server --binding=0.0.0.0`
+  `rails server -e dev --binding=0.0.0.0`
 
 After Navigating to localhost:3000 on your browser you should see the 'Yay! You're on Rails' page.
 
