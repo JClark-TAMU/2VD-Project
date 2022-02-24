@@ -29,9 +29,7 @@
 
   `rails webpacker:install`
 
-  `rails db:create`
-
-  `rails db:migrate`
+  `rails db:create && rails db:migrate`
 
 - To run the app:
 
