@@ -42,7 +42,7 @@ jobs:
       - name: Run brakeman
         run: brakeman -o brakeman.txt
       - name: Run rubocop
-        run: bundler exec rubocop rubocop --fail-level warning --out rubocop.txt
+        run: bundler exec rubocop --fail-level warning --out rubocop.txt
       - name: Upload coverage results
         uses: actions/upload-artifact@master
         if: always()
