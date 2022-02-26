@@ -1,7 +1,6 @@
 # location: spec/feature/integration_spec.rb
 require 'rails_helper'
 require 'omniauth'
-require 'tailwindcss-rails'
 
 RSpec.describe 'Going to the Officers page', type: :feature do
   before(:each) do
