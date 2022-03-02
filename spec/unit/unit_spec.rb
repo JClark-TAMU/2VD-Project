@@ -41,3 +41,48 @@ RSpec.describe(User, type: :model) do
     expect(subject).not_to(be_valid)
   end
 end
+
+RSpec.describe(Image, type: :model) do
+  let(:imageowner) {User.create(username: 'ben', email: 'ben@tamu.edu',
+                        isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben')}
+
+  subject do
+    described_class.new(title: 'Image', caption: 'An Image', showOnPortfolio: 'True', imageLink: 'link.com', users_id: imageowner.id)
+  end
+
+  it 'does not save without a title' do
+    subject.title = nil
+    expect(subject).not_to(be_valid)
+  end
+
+  it 'does not save without a caption' do
+    subject.caption = nil
+    expect(subject).not_to(be_valid)
+  end
+
+  it 'does not save without a link' do
+    subject.imageLink = nil
+    expect(subject).not_to(be_valid)
+  end
+
+  it 'does not save without a user FK' do
+    subject.users_id = nil
+    expect(subject).not_to(be_valid)
+  end
+
+  it 'saves with a title' do
+    expect(subject).to(be_valid)
+  end
+  
+  it 'saves with a caption' do
+    expect(subject).to(be_valid)
+  end
+
+  it 'saves with a FK' do
+    expect(subject).to(be_valid)
+  end
+
+  it 'saves with a Link' do
+    expect(subject).to(be_valid)
+  end
+end

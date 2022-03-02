@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   get '/users/officers', to: 'users#officers', as: 'officer'
   resources :users
   root to: 'dashboards#show'
