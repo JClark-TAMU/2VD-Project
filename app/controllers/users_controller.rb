@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = User.new 
   end
 
   # GET /users/1/edit
@@ -33,6 +33,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        if !(Portfolio.exists?(user_id: @user.id)) 
+          @user.create_portfolio(user_id: @user.id, title: 'untitled') 
+        end
         format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -75,6 +78,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :role, :bio, :isAdmin)
+      params.require(:user).permit(:username, :email, :role, :bio, :isAdmin, portfolio_attributes: [:title])
     end
 end
