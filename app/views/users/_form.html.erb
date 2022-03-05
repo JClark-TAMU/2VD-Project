@@ -21,10 +21,14 @@
     <%= form.text_field :full_name %>
   </div>
 
-  <div class="field">
+
+
+ <div class="field">
     <%= form.label "Avatar Link" %>
     <%= form.text_field :avatar %>
-  </div>
+  </div> 
+
+
 
   <% if User.find_by(email: current_admin.email).isAdmin %>
     <div class="field">
@@ -42,8 +46,10 @@
     <%= form.label :bio %>
     <%= form.text_field :bio %>
   </div>
+ 
 
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
