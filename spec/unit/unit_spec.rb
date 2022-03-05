@@ -45,9 +45,14 @@ end
 RSpec.describe(Image, type: :model) do
   let(:imageowner) {User.create(username: 'ben', email: 'ben@tamu.edu',
                         isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben')}
-
   subject do
-    described_class.new(title: 'Image', caption: 'An Image', showOnPortfolio: 'True', imageLink: 'link.com', users_id: imageowner.id)
+    described_class.new(title: 'Image', caption: 'An Image', showOnPortfolio: 'True', users_id: imageowner.id)
+  end
+
+  before do
+    subject.imageLink.attach(io: File.open(Rails.root.join('spec', 'trolltunga-fjord.jpg')),
+    filename: 'trolltunga-fjord.jpg',
+    content_type: 'application/jpg')
   end
 
   it 'does not save without a title' do
