@@ -30,7 +30,17 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
+      
+      if user_admin
+        @user.isAdmin = true
+      end
+      if !user_admin
+        @user.isAdmin = false
+      end
       if @user.update(user_params)
+        if !(Portfolio.exists?(user_id: @user.id)) 
+          @user.create_portfolio(user_id: @user.id, title: 'untitled') 
+        end
         format.html { redirect_to(user_url(@user), notice: 'User was successfully updated.') }
         format.json { render(:show, status: :ok, location: @user) }
       else
@@ -75,6 +85,10 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:username, :email, :role, :bio, :isAdmin)
+    params.require(:user).permit(:username, :email, :role, :bio, portfolio_attributes: [:title])
+  end
+
+  def user_admin
+    params.permit(:isAdmin)
   end
 end
