@@ -11,4 +11,5 @@ class User < ApplicationRecord
   scope :officers, -> { where(isAdmin: true) }
   # Only members
   scope :members, -> { where("username != 'guest'") }
+  
 end
