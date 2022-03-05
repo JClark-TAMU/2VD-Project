@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  has_many :images
-
   validates :role, presence: true
   validates :username, presence: true
   validates :email, presence: true
@@ -12,4 +10,8 @@ class User < ApplicationRecord
   # Only members
   scope :members, -> { where("username != 'guest'") }
   
+  #relations for users
+  has_one :portfolio
+  has_many :images, through: :portfolio
+  #Decide: "has_many :images" or "has_many :images, through :portfolio,:gallery" 
 end

@@ -103,6 +103,23 @@ RSpec.describe('User Profile', type: :feature) do
   end
 end
 
+RSpec.describe 'User Profile', type: :feature do
+  before(:each) do
+    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
+    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+    visit root_path
+    click_link "Sign in with Google"
+  end
+  scenario 'valid inputs' do
+    tempUser = User.create!(username: 'Froggers', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    tempPortfolio = Portfolio.create!(title: 'Concept Art', user_id: '0')
+    visit user_path(tempUser)
+    expect(page).to have_content('Froggers')
+    expect(page).to have_content('Member')
+    expect(page).to have_content('I am a frog')
+  end
+end
+
 # ALL TESTS SHOULD BE PLACED ABOVE THIS ONE
 # Otherwise, they will not work
 RSpec.describe('Logging In and Logging Out', type: :feature) do

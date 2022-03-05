@@ -42,6 +42,29 @@ RSpec.describe(User, type: :model) do
   end
 end
 
+#Portfolio unit tests
+RSpec.describe Portfolio, type: :model do
+  subject do
+    described_class.new(title: 'Concept Art', user_id: '0')
+  end
+
+  #Sunny Day Cases
+  it 'is valid with valid attributes' do
+    expect(subject).to be_valid
+  end
+
+  #Rainy Day Cases
+  it 'is not valid without a title' do
+    subject.title = nil
+    expect(subject).not_to be_valid
+  end
+
+  it 'is not valid without a user_id' do
+    subject.user_id = nil
+    expect(subject).not_to be_valid
+  end
+end
+
 RSpec.describe(Image, type: :model) do
   let(:imageowner) {User.create(username: 'ben', email: 'ben@tamu.edu',
                         isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben')}
