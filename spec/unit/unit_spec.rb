@@ -44,8 +44,10 @@ end
 
 #Portfolio unit tests
 RSpec.describe Portfolio, type: :model do
+  let (:portfolioOwner) {User.create(username: 'ben', email: 'ben@tamu.edu',
+                              isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben')}
   subject do
-    described_class.new(title: 'Concept Art', user_id: '0')
+    described_class.new(title: 'Concept Art', user_id: portfolioOwner.id)
   end
 
   #Sunny Day Cases

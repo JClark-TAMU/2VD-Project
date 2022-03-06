@@ -6,9 +6,11 @@
 </p>
 
 <p>
-  <strong>Userid:</strong>
+  <strong>User:</strong>
   <%= @portfolio.user.username %>
 </p>
 
+
 <%= link_to "Back to Dashboard", root_path %> | 
+<%= link_to "Edit title", edit_portfolio_path(@portfolio) %> | 
 <%= link_to 'New Image', new_image_path %>
