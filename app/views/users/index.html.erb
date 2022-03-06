@@ -12,6 +12,7 @@
       <% end %>
       <th>Role</th>
       <th>Bio</th>
+      <th>Portfolio</th>  
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <% end %>
         <td><%= user.role %></td>
         <td><%= user.bio %></td>
+        <td><%= link_to user.portfolio.title, user.portfolio %></td>
         <td><%= link_to 'Show Profile', user %></td>
         <% if User.find_by(email: current_admin.email).isAdmin %>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>
