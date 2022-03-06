@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+	<div class="container">
+		<a class="navbar-brand logo" href="#"></a>
+		<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+			<span class="visually-hidden">Toggle navigation</span>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNav" class="collapse navbar-collapse" style="text-align: right;">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item">
+					<a class="nav-link" style="text-align: center;height: 10px;margin-right: 5px;">
+						<%= link_to 'Home', root_path %>
+					</a>
+					<a class="nav-link active" style="margin-right: 5px;height: 10px;">
+						<%= link_to 'Home', root_path %>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" style="margin-right: 5px;height: 10px;">
+						<%= link_to 'Meet the Officers', officer_path %>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="users/index.html.erb">
+						<%= link_to 'Members', users_path %>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

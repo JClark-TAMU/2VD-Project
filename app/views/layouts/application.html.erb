@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoogleOauthDevise</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,6 +20,9 @@
         <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
       <% end -%>
     <% end %>
+	<header>
+      <%= render 'layouts/navigation' %>
+    </header>
     <%= yield %>
   </body>
 </html>

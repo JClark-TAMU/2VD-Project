@@ -1,113 +1,36 @@
 <div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Menu</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <%# <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                        </a>
-                    </li> %>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">
-                            <button type="button" class="btn btn-dark">
-                                <%= link_to 'Sign in', admin_google_oauth2_omniauth_authorize_path, method: :post%>
-                            </button>
-                            </span>
-                        </a>
-                    </li>
-                    <%# <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                        <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                            </li>
-                        </ul>
-                    </li> %>
-                    <%# <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                    </li> %>
-                    <%# <li>
-                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                            </li>
-                        </ul>
-                    </li> %>
-                    <%# <li>
-                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                            <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                            </li>
-                        </ul>
-                    </li> %>
-                    <%# <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                    </li> %>
-                </ul>
-                <hr>
-                <%# <div class="dropdown pb-4">
-                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">
-                            loser
-                        </span>
-                    </a> 
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div> %>
-            </div>
-        </div>
-        <div class="col py-3">
-            <h1 style="text-decoration:none">2VD</h1>
-            <%# <%= link_to "Sign Out", destroy_admin_session_path %>
-            <div> 
-                <%# <h2>Meet the Officers! </h2> %>
-                <button type="button" class="btn btn-dark">
-                    <%= link_to 'Meet the Officers!', officer_path, {:style=>'color:#FFFFFF;text-decoration:none'}%>
-                </button>
-                <h2> Weekly Prompt </h2>
-                <%# <h2>If you have not made an account yet and plan on being a member, follow the link below. </h1> %>
-                <%# <%= link_to 'Create Account Here', edit_user_path(User.find_by(email: current_admin.email)) <br> %> 
-                <%# <h2>Otherwise, use this link to go to the index: </h2> %>
-                <%# <%= link_to 'Current Users', users_path <br> %> 
-                <%# <h2>To see only the current officers: </h2> %>
-                <%# <%= link_to 'Meet the Officers', officer_path %> 
-            </div>
-        </div>
-    </div>
+    <main class="page projects-page">
+		<section class="portfolio-block projects-cards" style="padding-top: 50px;padding-bottom: 50px;">
+			<div class="container" style="padding: 0px;">
+				<div class="heading">
+					<h2 style="font-size: 35px;font-family: Archivo, sans-serif;">CURRENT PROMPT</h2>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div id="carousel-1" class="carousel slide" data-bs-ride="carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img class="w-100 d-block" alt="Slide Image" />
+									<%= image_tag("2vd_logo.png") %>
+								</div>
+								<div class="carousel-item"><img class="w-100 d-block" src="images/2vd_logo.png" alt="Slide Image" /></div>
+								<div class="carousel-item"><img class="w-100 d-block" src="images/2vd_banner.png" alt="Slide Image" /></div>
+							</div>
+							<div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+							<ol class="carousel-indicators">
+								<li class="active" data-bs-target="#carousel-1" data-bs-slide-to="0"></li>
+								<li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+								<li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="row">
+						<div class="col" style="padding-left: 47%;padding-top: 30px;"><button class="btn btn-primary" type="button" style="padding-right: 16px;background: rgb(124,57,152);">Button</button></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 </div>
 
