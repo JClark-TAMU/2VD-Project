@@ -23,6 +23,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.users_id = User.find_by(email: current_admin.email).id
+    @image.portfolios_id = User.find_by(email: current_admin.email).portfolioID
 
     respond_to do |format|
       if @image.save
