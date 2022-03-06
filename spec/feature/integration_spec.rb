@@ -110,7 +110,8 @@ RSpec.describe 'User Portfolio', type: :feature do
     visit root_path
     click_link "Sign in with Google"
   end
-  scenario 'Creates portfolio on update for new users' do
+  
+  scenario 'creates portfolio on update for new users' do
     tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
@@ -119,13 +120,13 @@ RSpec.describe 'User Portfolio', type: :feature do
     expect(page).to have_content('untitled')
   end
 
-  scenario 'Does not show portfolio for guest' do
+  scenario 'does not show portfolio for guest' do
     tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
     visit users_path
     expect(page).not_to(have_content('untitled'))
   end
 
-  scenario 'Title is updated when changed' do
+  scenario 'title is updated when changed' do
     tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
@@ -138,6 +139,16 @@ RSpec.describe 'User Portfolio', type: :feature do
     click_on 'Update Portfolio'
     visit users_path
     expect(page).to have_content('Concept Art')
+  end
+
+  scenario 'can be edited by owner' do
+    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    click_on 'untitled'
+    expect(page).to have_content('Edit title')
   end
 end
 

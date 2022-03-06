@@ -21,7 +21,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.username, user %></td>
+        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <% if User.find_by(email: current_admin.email).isAdmin %>
           <td><%= user.isAdmin %></td>
@@ -29,7 +29,6 @@
         <td><%= user.role %></td>
         <td><%= user.bio %></td>
         <% if user.portfolio %>
-          <td><%= user.portfolioID %></td>  
           <td><%= link_to user.portfolio.title, user.portfolio %></td>
         <% end %>
         <td><%= link_to 'Show Profile', user %></td>

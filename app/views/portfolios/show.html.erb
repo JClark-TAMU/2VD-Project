@@ -11,6 +11,8 @@
 </p>
 
 
-<%= link_to "Back to Dashboard", root_path %> | 
-<%= link_to "Edit title", edit_portfolio_path(@portfolio) %> | 
+<%= link_to "Back to Dashboard", root_path %> |
+<% if current_admin.id == @portfolio.user.id %> 
+  <%= link_to "Edit title", edit_portfolio_path(@portfolio) %> | 
+<% end %>
 <%= link_to 'New Image', new_image_path %>
