@@ -103,20 +103,52 @@ RSpec.describe('User Profile', type: :feature) do
   end
 end
 
-RSpec.describe 'User Profile', type: :feature do
+RSpec.describe 'User Portfolio', type: :feature do
   before(:each) do
     Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
     visit root_path
     click_link "Sign in with Google"
   end
-  scenario 'valid inputs' do
-    tempUser = User.create!(username: 'Froggers', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
-    tempPortfolio = Portfolio.create!(title: 'Concept Art', user_id: '0')
-    visit user_path(tempUser)
-    expect(page).to have_content('Froggers')
-    expect(page).to have_content('Member')
-    expect(page).to have_content('I am a frog')
+  
+  scenario 'creates portfolio on update for new users' do
+    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to have_content('untitled')
+  end
+
+  scenario 'does not show portfolio for guest' do
+    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    visit users_path
+    expect(page).not_to(have_content('untitled'))
+  end
+
+  scenario 'title is updated when changed' do
+    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to have_content('untitled')
+    click_on 'untitled'
+    click_on 'Edit title'
+    fill_in 'portfolio_title', with: 'Concept Art'
+    click_on 'Update Portfolio'
+    visit users_path
+    expect(page).to have_content('Concept Art')
+  end
+
+  scenario 'can be edited by owner' do
+    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    click_on 'untitled'
+    expect(page).to have_content('Edit title')
   end
 end
 
