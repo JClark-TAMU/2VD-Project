@@ -1,6 +1,3 @@
-Admin.create!([
-  {email: "jonathan.clark@tamu.edu", full_name: "Jonathan Clark", uid: "103215196265443395357", avatar_url: "https://lh3.googleusercontent.com/a-/AOh14GjKHilpdz9o-rWwR26k4y2VHT8w-Ih3JViRGv4pAw=s96-c"}
-])
 Image.create!([
   {title: "Image of nothing", caption: "literally nothing", showOnPortfolio: false, imageLink: nil, users_id: 1, portfolios_id: nil},
   {title: "Image of something", caption: "literally nothing", showOnPortfolio: true, imageLink: nil, users_id: 1, portfolios_id: nil}
