@@ -17,7 +17,9 @@ class UsersController < ApplicationController
   # end
 
   # GET /users/1 or /users/1.json
-  def show; end
+  def show 
+    @images = user_profile_images
+  end
 
   # GET /users/new
   def new
@@ -90,5 +92,9 @@ class UsersController < ApplicationController
 
   def user_admin
     params.permit(:isAdmin)
+  end
+
+  def user_profile_images
+    Image.ownedby(@user.id).publicimages
   end
 end
