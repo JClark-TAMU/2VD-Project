@@ -8,4 +8,8 @@
 <%= link_to 'Current Users', users_path %> <br>
 <h2>To see only the current officers: </h2>
 <%= link_to 'Officers', officer_path %> <br>
+<h2>To see only the Images: </h2>
+<%= link_to 'Images', images_path %> <br>
+<h2>To access your portfolio: </h2>
+<%= link_to 'My Portfolio', portfolio_path(User.find_by(email: current_admin.email).portfolioID) %> <br>
 </div>

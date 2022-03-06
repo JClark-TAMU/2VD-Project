@@ -27,7 +27,9 @@
         <% end %>
         <td><%= user.role %></td>
         <td><%= user.bio %></td>
-        <td><%= link_to user.portfolio.title, user.portfolio %></td>
+        <% if user.portfolio %>
+          <td><%= link_to user.portfolio.title, user.portfolio %></td>
+        <% end %>
         <td><%= link_to 'Show Profile', user %></td>
         <% if User.find_by(email: current_admin.email).isAdmin %>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>

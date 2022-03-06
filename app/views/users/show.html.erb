@@ -26,6 +26,12 @@
 
 </div>
 
+<% @images.each do |image| %>
+  <div class="flex-child image">
+    <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+  </div>
+<% end %>
+
 <div class="eof-buttons">
   <%= link_to 'Edit Profile', edit_user_path(@user) %> |
   <%= link_to 'Show All Users', users_path %>
