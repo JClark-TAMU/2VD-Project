@@ -69,29 +69,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # Checks to see if current session user has perms to do actions
-  def is_permitted
-    @permitted ||= sessioned_user.isAdmin || (User.find(params[:id]).email == current_admin.email)
-    unless @permitted
-      respond_to do |format|
-        format.html { redirect_to(users_url, notice: 'You do not have the perms to do this.') }
-        format.json { render(:show, status: :ok, location: @user) }
-      end
-    end
-  end
-
-  # Gets current session user by user table
-  def sessioned_user
-    @sessioned_user = User.find_by(email: current_admin.email)
-  end
-
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:username, :email, :role, :bio, portfolio_attributes: [:title, :id])
   end
 
   def user_admin
-    params.permit(:isAdmin)
+    params[:isAdmin]
   end
 
   def user_profile_images

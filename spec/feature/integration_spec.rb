@@ -127,7 +127,7 @@ RSpec.describe 'User Portfolio', type: :feature do
   end
 
   scenario 'title is updated when changed' do
-    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
@@ -142,7 +142,7 @@ RSpec.describe 'User Portfolio', type: :feature do
   end
 
   scenario 'can be edited by owner' do
-    tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'

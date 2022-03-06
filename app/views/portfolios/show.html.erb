@@ -10,9 +10,11 @@
   <%= @portfolio.user.username %>
 </p>
 
+<%= User.find_by(email: current_admin.email).username %>
+<%= @portfolio.user.username %>
 
-<%= link_to "Back to Dashboard", root_path %> |
-<% if current_admin.id == @portfolio.user.id %> 
-  <%= link_to "Edit title", edit_portfolio_path(@portfolio) %> | 
+<%= link_to "Back to Dashboard", root_path %> 
+<% if User.find_by(email: current_admin.email) == @portfolio.user %> 
+  | <%= link_to "Edit title", edit_portfolio_path(@portfolio) %>
+  | <%= link_to 'New Image', new_image_path %>
 <% end %>
-<%= link_to 'New Image', new_image_path %>
