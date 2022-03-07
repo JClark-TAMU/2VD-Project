@@ -11,6 +11,14 @@
         .flash__notice  { color: blue; }
         .flash__success { color: green; }
     </style>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Projects - Brand</title>
+    <link rel="stylesheet" href="app/assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="app/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
   </head>
 
   <body>
@@ -19,6 +27,39 @@
         <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
       <% end -%>
     <% end %>
+	<body style="background: rgb(252,249,246);">
+		<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+			<div class="container">
+				<a class="navbar-brand logo" href="#">
+					<%= image_tag ("2VD-logo.png"), :size => "30"%>
+				</a>
+				<button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav">
+					<span class="visually-hidden">Toggle navigation</span>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
+					<ul class="navbar-nav ms-auto" style="margin-right:auto">
+						<li>
+							<button class="btn btn-primary" type="button">
+								<%= link_to 'Home', root_path, {:style=> "text-decoration: none; color: #FFFFFF"} %>
+							</button>
+						</li>
+						<li style="padding-left: 8px; padding-right: 8px">
+							<button class="btn btn-primary" type="button">
+								<%= link_to 'Meet The Officers', officer_path, {:style=> "text-decoration: none; color: #FFFFFF"} %>
+							</button>
+						</li>
+						<li>
+							<button class="btn btn-primary" type="button">
+								<%= link_to 'Members', users_path, {:style=> "text-decoration: none; color: #FFFFFF"} %>
+							</button>
+						</li>
+					</ul>
+					<button class="btn btn-primary" type="button">Sign In</button>
+				</div>
+			</div>
+		</nav>
+	</body>
     <%= yield %>
   </body>
 </html>
