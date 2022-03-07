@@ -3,13 +3,13 @@
     {
       "warning_type": "Mass Assignment",
       "warning_code": 105,
-      "fingerprint": "7683f98a1c4fbfd8c9b5aad11ee2b0d20efc595b948642e90cb678bf58b2d7cc",
+      "fingerprint": "e23e7b7c60d6e773f11aa474ab5bea7f7fb3cbb1f809465b184eb32c8ca5c975",
       "check_name": "PermitAttributes",
       "message": "Potentially dangerous key allowed for mass assignment",
       "file": "app/controllers/users_controller.rb",
-      "line": 85,
+      "line": 74,
       "link": "https://brakemanscanner.org/docs/warning_types/mass_assignment/",
-      "code": "params.require(:user).permit(:username, :email, :role, :bio)",
+      "code": "params.require(:user).permit(:username, :email, :role, :bio, :portfolio_attributes => ([:title, :id]))",
       "render_path": null,
       "location": {
         "type": "method",
@@ -18,9 +18,9 @@
       },
       "user_input": ":role",
       "confidence": "Medium",
-      "note": "Role is not intrinsically tied to anyother systems"
+      "note": ""
     }
   ],
-  "updated": "2022-03-05 00:42:35 +0000",
+  "updated": "2022-03-07 00:26:10 +0000",
   "brakeman_version": "5.2.1"
 }
