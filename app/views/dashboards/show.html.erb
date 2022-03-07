@@ -1,17 +1,112 @@
-<h1>You're logged in! Welcome to Web2D!</h1>
+<!-- from bootstrap studio -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Projects - Brand</title>
+    <link rel="stylesheet" href="app/assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="app/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+</head>
+
+<body style="background: rgb(252,249,246);">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><a class="navbar-brand logo" href="#">
+            <%= image_tag ("2VD-logo.png"), :size => "30"%>
+            </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
+                <ul class="navbar-nav ms-auto" style="margin-right:auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html" style="text-align: center;height: 10px;margin-right: 5px;">Home</a><a class="nav-link active" href="projects-grid-cards.html" style="margin-right: 5px;height: 10px;"></a></li>
+                    <li class="nav-item" style="padding-right: 32px;"><a class="nav-link active" href="projects-grid-cards.html" style="margin-right: 5px;height: 10px;">Meet the Officers</a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><%= link_to 'Members', users_path %></a> 
+                    </li>
+                </ul><button class="btn btn-primary" type="button">Sign In</button>
+            </div>
+        </div>
+    </nav>
+
+<h1><br><br>You're logged in! Welcome to Web2D!</h1>
 <%= link_to "Sign Out", destroy_admin_session_path %>
 
 <div> 
-<h2>If you have not made an account yet and plan on being a member, follow the link below. </h1>
+<h4>If you have not made an account yet and plan on being a member, follow the link below. </h4>
 <%= link_to 'Create Account Here', edit_user_path(User.find_by(email: current_admin.email)) %> <br>
-<h2>Otherwise, use this link to go to the index: </h2>
+<h4>Otherwise, use this link to go to the index: </h4>
 <%= link_to 'Current Users', users_path %> <br>
-<h2>To see only the current officers: </h2>
+<h4>To see only the current officers: </h4>
 <%= link_to 'Officers', officer_path %> <br>
-<h2>To see only the Images: </h2>
+<h4>To see only the Images: </h4>
 <%= link_to 'Images', images_path %> <br>
+
 <% if User.find_by(email: current_admin.email).portfolio %>
     <h2>To access your portfolio: </h2>
     <%= link_to User.find_by(email: current_admin.email).portfolio.title, portfolio_path(User.find_by(email: current_admin.email).portfolio) %> <br>
 <% end %>
 </div>
+
+    <main class="page projects-page" style="padding-top: 6%;">
+        <section class="portfolio-block projects-cards" style="padding-top: 50px;padding-bottom: 50px;">
+            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>Current Prompt</strong></h1>
+            <div class="container" style="padding: 0px;">
+                <div class="heading"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <%= image_tag ("image5.jpg")%>
+                                </div>
+                                <div class="carousel-item">
+                                    <%= image_tag ("avatar.jpg")%>
+                                </div>
+                                <div class="carousel-item">
+                                    <%= image_tag ("2VD-header.jpg")%>
+                                </div>
+                            </div>
+                            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+                            <ol class="carousel-indicators">
+                                <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                                <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                                <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="col" style="padding-left: 45.5%;padding-top: 30px;"><button class="btn btn-primary" type="button" style="padding-right: 5%;background: rgb(124,57,152);padding-left: 5%;padding-bottom: 2%;padding-top: 2%;font-weight: bold;">Submit</button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;"><strong>Previous Prompts</strong></h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <%= image_tag ("avatar.jpg"), :size => "400"%>
+                    </div>
+                    <div class="col-md-4">
+                        <%= image_tag ("apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg"), :size => "400"%>
+                    </div>
+                    <div class="col-md-4">
+                        <%= image_tag ("image4.jpg"), :size => "400"%>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="links"></div>
+            <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
+        </div>
+    </footer>
+    <script src="app/assets/stylesheets/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="app/assets/javascript/packs/application.js"></script>
+</body>
+
