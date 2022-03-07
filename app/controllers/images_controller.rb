@@ -21,9 +21,10 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
+    @user = User.find_by(email: current_admin.email)
     @image = Image.new(image_params)
-    @image.users_id = User.find_by(email: current_admin.email).id
-    @image.portfolios_id = User.find_by(email: current_admin.email).portfolioID
+    @image.users_id = @user.id
+    @image.portfolios_id = Portfolio.find_by(user_id: @image.users_id).id
 
     respond_to do |format|
       if @image.save

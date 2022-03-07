@@ -8,6 +8,7 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1 or /portfolios/1.json
   def show
+    @images = portfolio_images
   end
 
   # GET /portfolios/new
@@ -17,21 +18,6 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios/1/edit
   def edit
-  end
-
-  # POST /portfolios or /portfolios.json
-  def create
-    @portfolio = Portfolio.new(portfolio_params)
-
-    respond_to do |format|
-      if @portfolio.save
-        format.html { redirect_to portfolio_url(@portfolio), notice: "Portfolio was successfully created." }
-        format.json { render :show, status: :created, location: @portfolio }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /portfolios/1 or /portfolios/1.json
@@ -66,5 +52,9 @@ class PortfoliosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def portfolio_params
       params.require(:portfolio).permit(:title, :userID)
+    end
+
+    def portfolio_images
+      Image.inportfolio(@portfolio.id)
     end
 end

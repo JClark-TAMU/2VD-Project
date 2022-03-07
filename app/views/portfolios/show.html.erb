@@ -15,3 +15,11 @@
   | <%= link_to "Edit title", edit_portfolio_path(@portfolio) %>
   | <%= link_to 'New Image', new_image_path %>
 <% end %>
+
+<% @images.each do |image| %>
+  <div class="flex-child image">
+    <%= link_to image_path(image) do %>
+      <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+    <% end %>
+  </div>
+<% end %>

@@ -41,7 +41,8 @@ class UsersController < ApplicationController
       end
       if @user.update(user_params)
         if !(Portfolio.exists?(user_id: @user.id)) 
-          @user.create_portfolio(user_id: @user.id, title: 'untitled') 
+          @portfolio = @user.create_portfolio(user_id: @user.id, title: 'untitled')
+          @user.portfolioID = @portfolio.id
         end
         format.html { redirect_to(user_url(@user), notice: 'User was successfully updated.') }
         format.json { render(:show, status: :ok, location: @user) }

@@ -152,6 +152,89 @@ RSpec.describe 'User Portfolio', type: :feature do
   end
 end
 
+RSpec.describe 'Images', type: :feature do
+  before(:each) do
+    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
+    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+    visit root_path
+    click_link "Sign in with Google"
+  end
+
+  scenario 'image creation' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to have_content('untitled')
+    click_on 'untitled'
+    click_on 'New Image'
+    fill_in 'image_title', with: 'Fjord'
+    fill_in 'image_caption', with: 'Fjord'
+    attach_file 'image_imageLink', 'spec/trolltunga-fjord.jpg'
+    click_on 'Create Image'
+    expect(page).to have_content('Fjord')
+  end
+
+  scenario 'image shows on portfolio' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to have_content('untitled')
+    click_on 'untitled'
+    click_on 'New Image'
+    fill_in 'image_title', with: 'Fjord'
+    fill_in 'image_caption', with: 'Fjord'
+    attach_file 'image_imageLink', 'spec/trolltunga-fjord.jpg'
+    click_on 'Create Image'
+    all_images = page.all('img')
+    all_images.each do |img|
+      get img[:src]
+      expect(response).to be_successful
+    end
+  end
+
+  scenario 'private image does not show on profile' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to have_content('untitled')
+    click_on 'untitled'
+    click_on 'New Image'
+    fill_in 'image_title', with: 'Fjord'
+    fill_in 'image_caption', with: 'Fjord'
+    attach_file 'image_imageLink', 'spec/trolltunga-fjord.jpg'
+    click_on 'Create Image'
+    visit user_path(tempUser)
+    all_images = page.all('img')
+    all_images.each do |img|
+      get img[:src]
+      expect(response).not_to be_successful
+    end
+  end
+
+  scenario 'images show up in index' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to have_content('untitled')
+    click_on 'untitled'
+    click_on 'New Image'
+    fill_in 'image_title', with: 'Fjord'
+    fill_in 'image_caption', with: 'Fjord'
+    attach_file 'image_imageLink', 'spec/trolltunga-fjord.jpg'
+    click_on 'Create Image'
+    visit images_path
+    expect(page).to have_content('Fjord')
+  end
+end
+
 # ALL TESTS SHOULD BE PLACED ABOVE THIS ONE
 # Otherwise, they will not work
 RSpec.describe('Logging In and Logging Out', type: :feature) do

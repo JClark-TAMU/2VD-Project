@@ -27,7 +27,9 @@
 
 <% @images.each do |image| %>
   <div class="flex-child image">
-    <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+    <%= link_to image_path(image) do %>
+      <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+    <% end %>
   </div>
 <% end %>
 
