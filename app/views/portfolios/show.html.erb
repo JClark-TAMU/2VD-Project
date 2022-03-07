@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @portfolio.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @portfolio.user.username %>
+</p>
+
+<%= link_to "Back to Dashboard", root_path %> 
+<% if User.find_by(email: current_admin.email) == @portfolio.user %> 
+  | <%= link_to "Edit title", edit_portfolio_path(@portfolio) %>
+  | <%= link_to 'New Image', new_image_path %>
+<% end %>
+
+<% @images.each do |image| %>
+  <div class="flex-child image">
+    <%= link_to image_path(image) do %>
+      <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+    <% end %>
+  </div>
+<% end %>

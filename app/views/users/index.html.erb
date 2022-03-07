@@ -12,6 +12,8 @@
       <% end %>
       <th>Role</th>
       <th>Bio</th>
+      <th>PortfolioID</th>
+      <th>Portfolio</th>  
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,13 +21,16 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.username, user %></td>
+        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <% if User.find_by(email: current_admin.email).isAdmin %>
           <td><%= user.isAdmin %></td>
         <% end %>
         <td><%= user.role %></td>
         <td><%= user.bio %></td>
+        <% if user.portfolio %>
+          <td><%= link_to user.portfolio.title, user.portfolio %></td>
+        <% end %>
         <td><%= link_to 'Show Profile', user %></td>
         <% if User.find_by(email: current_admin.email).isAdmin %>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>
