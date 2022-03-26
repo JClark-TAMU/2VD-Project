@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_25_223733) do
+ActiveRecord::Schema.define(version: 2022_03_26_032724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2022_03_25_223733) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "users_id"
     t.bigint "portfolios_id"
-    t.bigint "gallery_id"
-    t.index ["gallery_id"], name: "index_images_on_gallery_id"
+    t.bigint "galleries_id"
+    t.index ["galleries_id"], name: "index_images_on_galleries_id"
     t.index ["portfolios_id"], name: "index_images_on_portfolios_id"
     t.index ["users_id"], name: "index_images_on_users_id"
   end
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2022_03_25_223733) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "images", "galleries"
+  add_foreign_key "images", "galleries", column: "galleries_id"
   add_foreign_key "images", "portfolios", column: "portfolios_id"
   add_foreign_key "images", "users", column: "users_id"
 end

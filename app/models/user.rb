@@ -13,5 +13,4 @@ class User < ApplicationRecord
   #relations for users
   has_one :portfolio
   has_many :images, through: :portfolio
-  #Decide: "has_many :images" or "has_many :images, through :portfolio,:gallery" 
 end
