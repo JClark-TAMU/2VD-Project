@@ -34,7 +34,7 @@ local:
 
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  access_key_id: AKIA6GBUPBHRPHO7SIVM
+  secret_access_key: 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
   region: us-east-2
   bucket: web2d-dev
