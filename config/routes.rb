@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :galleries
   resources :images
   resources :portfolios
   get '/users/officers', to: 'users#officers', as: 'officer'
