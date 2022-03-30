@@ -42,42 +42,51 @@ RSpec.describe(User, type: :model) do
   end
 end
 
-#Portfolio unit tests
-RSpec.describe Portfolio, type: :model do
-  let (:portfolioOwner) {User.create(username: 'ben', email: 'ben@tamu.edu',
-                              isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben')}
+# Portfolio unit tests
+RSpec.describe(Portfolio, type: :model) do
   subject do
     described_class.new(title: 'Concept Art', user_id: portfolioOwner.id)
   end
 
-  #Sunny Day Cases
-  it 'is valid with valid attributes' do
-    expect(subject).to be_valid
+  let(:portfolioOwner) do
+    User.create(username: 'ben', email: 'ben@tamu.edu',
+                isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben'
+    )
   end
 
-  #Rainy Day Cases
+  # Sunny Day Cases
+  it 'is valid with valid attributes' do
+    expect(subject).to(be_valid)
+  end
+
+  # Rainy Day Cases
   it 'is not valid without a title' do
     subject.title = nil
-    expect(subject).not_to be_valid
+    expect(subject).not_to(be_valid)
   end
 
   it 'is not valid without a user_id' do
     subject.user_id = nil
-    expect(subject).not_to be_valid
+    expect(subject).not_to(be_valid)
   end
 end
 
 RSpec.describe(Image, type: :model) do
-  let(:imageowner) {User.create(username: 'ben', email: 'ben@tamu.edu',
-                        isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben')}
   subject do
     described_class.new(title: 'Image', caption: 'An Image', showOnPortfolio: 'True', users_id: imageowner.id)
   end
 
+  let(:imageowner) do
+    User.create(username: 'ben', email: 'ben@tamu.edu',
+                isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben'
+    )
+  end
+
   before do
     subject.imageLink.attach(io: File.open(Rails.root.join('spec', 'trolltunga-fjord.jpg')),
-    filename: 'trolltunga-fjord.jpg',
-    content_type: 'application/jpg')
+                             filename: 'trolltunga-fjord.jpg',
+                             content_type: 'application/jpg'
+                            )
   end
 
   it 'does not save without a title' do
@@ -103,7 +112,7 @@ RSpec.describe(Image, type: :model) do
   it 'saves with a title' do
     expect(subject).to(be_valid)
   end
-  
+
   it 'saves with a caption' do
     expect(subject).to(be_valid)
   end

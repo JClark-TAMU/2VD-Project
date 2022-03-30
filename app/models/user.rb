@@ -9,8 +9,8 @@ class User < ApplicationRecord
   scope :officers, -> { where(isAdmin: true) }
   # Only members
   scope :members, -> { where("username != 'guest'") }
-  
-  #relations for users
+
+  # relations for users
   has_one :portfolio
   has_many :images, through: :portfolio
 end

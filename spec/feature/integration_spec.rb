@@ -103,86 +103,86 @@ RSpec.describe('User Profile', type: :feature) do
   end
 end
 
-RSpec.describe 'User Portfolio', type: :feature do
-  before(:each) do
-    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
-    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+RSpec.describe('User Portfolio', type: :feature) do
+  before do
+    Rails.application.env_config['devise.mapping'] = Devise.mappings[:user]
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
     visit root_path
-    click_link "Sign in with Google"
+    click_link 'Sign in with Google'
   end
-  
-  scenario 'creates portfolio on update for new users' do
+
+  it 'creates portfolio on update for new users' do
     tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
-    expect(page).to have_content('untitled')
+    expect(page).to(have_content('untitled'))
   end
 
-  scenario 'does not show portfolio for guest' do
+  it 'does not show portfolio for guest' do
     tempUser = User.create!(username: 'guest', email: 'britwiz@tamu.edu', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
     visit users_path
     expect(page).not_to(have_content('untitled'))
   end
 
-  scenario 'title is updated when changed' do
+  it 'title is updated when changed' do
     tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
-    expect(page).to have_content('untitled')
+    expect(page).to(have_content('untitled'))
     click_on 'untitled'
     click_on 'Edit title'
     fill_in 'portfolio_title', with: 'Concept Art'
     click_on 'Update Portfolio'
     visit users_path
-    expect(page).to have_content('Concept Art')
+    expect(page).to(have_content('Concept Art'))
   end
 
-  scenario 'can be edited by owner' do
+  it 'can be edited by owner' do
     tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
     click_on 'untitled'
-    expect(page).to have_content('Edit title')
+    expect(page).to(have_content('Edit title'))
   end
 end
 
-RSpec.describe 'Images', type: :feature do
-  before(:each) do
-    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
-    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:google_oauth2]
+RSpec.describe('Images', type: :feature) do
+  before do
+    Rails.application.env_config['devise.mapping'] = Devise.mappings[:user]
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
     visit root_path
-    click_link "Sign in with Google"
+    click_link 'Sign in with Google'
   end
 
-  scenario 'image creation' do
+  it 'image creation' do
     tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
-    expect(page).to have_content('untitled')
+    expect(page).to(have_content('untitled'))
     click_on 'untitled'
     click_on 'New Image'
     fill_in 'image_title', with: 'Fjord'
     fill_in 'image_caption', with: 'Fjord'
     attach_file 'image_imageLink', 'spec/trolltunga-fjord.jpg'
     click_on 'Create Image'
-    expect(page).to have_content('Fjord')
+    expect(page).to(have_content('Fjord'))
   end
 
-  scenario 'image shows on portfolio' do
+  it 'image shows on portfolio' do
     tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
-    expect(page).to have_content('untitled')
+    expect(page).to(have_content('untitled'))
     click_on 'untitled'
     click_on 'New Image'
     fill_in 'image_title', with: 'Fjord'
@@ -192,17 +192,17 @@ RSpec.describe 'Images', type: :feature do
     all_images = page.all('img')
     all_images.each do |img|
       get img[:src]
-      expect(response).to be_successful
+      expect(response).to(be_successful)
     end
   end
 
-  scenario 'private image does not show on profile' do
+  it 'private image does not show on profile' do
     tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
-    expect(page).to have_content('untitled')
+    expect(page).to(have_content('untitled'))
     click_on 'untitled'
     click_on 'New Image'
     fill_in 'image_title', with: 'Fjord'
@@ -213,17 +213,17 @@ RSpec.describe 'Images', type: :feature do
     all_images = page.all('img')
     all_images.each do |img|
       get img[:src]
-      expect(response).not_to be_successful
+      expect(response).not_to(be_successful)
     end
   end
 
-  scenario 'images show up in index' do
+  it 'images show up in index' do
     tempUser = User.find_by(email: 'britwiz@tamu.edu')
     visit edit_user_path(tempUser)
     fill_in 'user_username', with: 'Froggers'
     click_on 'Update User'
     visit users_path
-    expect(page).to have_content('untitled')
+    expect(page).to(have_content('untitled'))
     click_on 'untitled'
     click_on 'New Image'
     fill_in 'image_title', with: 'Fjord'
@@ -231,7 +231,7 @@ RSpec.describe 'Images', type: :feature do
     attach_file 'image_imageLink', 'spec/trolltunga-fjord.jpg'
     click_on 'Create Image'
     visit images_path
-    expect(page).to have_content('Fjord')
+    expect(page).to(have_content('Fjord'))
   end
 end
 
