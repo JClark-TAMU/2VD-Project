@@ -235,6 +235,122 @@ RSpec.describe('Images', type: :feature) do
   end
 end
 
+RSpec.describe('Galleries', type: :feature) do
+  before do
+    Rails.application.env_config['devise.mapping'] = Devise.mappings[:user]
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+    visit root_path
+    click_link 'Sign in with Google'
+  end
+  it 'is accessible' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('Galleries'))
+  end
+  it 'shows galleries' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('Artwork'))
+  end
+  it 'galleries are clickable' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('Artwork'))
+    click_on 'Show'
+    expect(page).to(have_content('Artwork'))
+  end
+  it 'galleries cannot be changed by standard users' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('Artwork'))
+    expect(page).not_to(have_content('Edit'))
+    expect(page).not_to(have_content('Destroy'))
+  end
+  it 'galleries can be changed by officers' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempUser.update(isAdmin: true)
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('Artwork'))
+    expect(page).to(have_content('Edit'))
+    click_on 'Edit'
+    fill_in 'gallery_prompt', with: 'Panels'
+    click_on 'Update Gallery'
+    expect(page).to(have_content('Panels'))
+    expect(page).not_to(have_content('Artwork'))
+  end
+  it 'galleries can be deleted by officers' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempUser.update(isAdmin: true)
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('Artwork'))
+    expect(page).to(have_content('Destroy'))
+    click_on 'Destroy'
+    expect(page).not_to(have_content('Artwork'))
+  end
+  it 'galleries cannot be created by standard users' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).not_to(have_content('New Gallery'))
+  end
+  it 'galleries can be created by officiers' do
+    tempUser = User.find_by(email: 'britwiz@tamu.edu')
+    tempUser.update(isAdmin: true)
+    tempgallery = Gallery.create!(prompt: "Artwork")
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit galleries_path
+    expect(page).to(have_content('New Gallery'))
+    click_on 'New Gallery'
+    fill_in 'gallery_prompt', with: 'Panels'
+    click_on 'Create Gallery'
+    expect(page).to(have_content('Panels'))
+  end
+end
+
 # ALL TESTS SHOULD BE PLACED ABOVE THIS ONE
 # Otherwise, they will not work
 RSpec.describe('Logging In and Logging Out', type: :feature) do
