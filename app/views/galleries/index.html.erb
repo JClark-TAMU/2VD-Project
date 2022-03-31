@@ -15,8 +15,10 @@
       <tr>
         <td><%= gallery.prompt %></td>
         <td><%= link_to 'Show', gallery %></td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if User.find_by(email: current_admin.email).isAdmin %>
+          <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +26,7 @@
 
 <br>
 
-<%= link_to 'New Gallery', new_gallery_path %>
+<% if User.find_by(email: current_admin.email).isAdmin %>
+  <%= link_to 'New Gallery', new_gallery_path %>
+<% end %>
+<%= link_to "Back to Dashboard", root_path %>
