@@ -11,26 +11,7 @@
     </div>
   <% end %>
 
-  <div class="container" style="width: 50%;margin-top: 0px;margin-left: 0;">
-    <form>
-      <label class="form-label">Name:</label><input class="form-control" type="text" value="<%= @user.full_name %>"/>
-      <label class="form-label">Username:</label><input class="form-control" type="text" value="<%= @user.username %>"/>
-      <label class="form-label">Avatar:</label><input class="form-control" type="url" value="<%= @user.avatar %>"/>
-
-      <% if User.find_by(email: current_admin.email).isAdmin %>
-        <div class="form-check">
-          <input id="formCheck-1" class="form-check-input" type="checkbox" />
-          <label class="form-check-label" for="formCheck-1">Admin</label>
-        </div>
-      <% end %>
-
-      <label class="form-label">Role:</label><input class="form-control" type="text" value="<%= @user.role %>"/>
-      <label class="form-label">Bio:</label><input class="form-control" type="text" value="<%= @user.bio %>"/>
-      <!--<button class="btn btn-primary active" type="submit" >Update</button>-->
-    </form>
-  </div> 
-
- <!-- <div class="field">
+ <div class="field">
     <%= form.label :full_name %>
     <%= form.text_field :full_name %>
   </div>
@@ -60,7 +41,7 @@
   <div class="field">
     <%= form.label :bio %>
     <%= form.text_field :bio %>
-  </div> -->
+  </div> 
 
   <div class="actions">
     <%= form.submit %>
