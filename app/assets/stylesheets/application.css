@@ -15,5 +15,16 @@
  */
 
  .nav-link{
-    text-decoration: none;
+   text-decoration: none;
 }
+
+/* font-face and body modified to add custom font */
+@font-face {
+    font-family: 'Archivo';
+    src: url('Montserrat-Regular.ttf');
+ }
+
+ body {
+    background-color: #ffffff;
+    font-family: "Archivo";
+ }

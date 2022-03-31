@@ -1,29 +1,33 @@
-<!-- This is what shows the user when they are logged in? -->
+<!-- User's Profile -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+</head>
 
 <p id="notice"><%= notice %></p>
 
-<div class="flex-container">
-
-  <% unless @user.avatar == nil %>
-    <div class="flex-child image">
-      <%= image_tag(@user.avatar, class: 'avatar_img', style: 'width:300px') %>
-    </div>
-  <% end %>
-
-  <div class="flex-child words">
-    <p class="username">
-        <%= @user.username %>
-    </p>
-  
-    <p class="role">
-      <%= @user.role %>
-    </p>
-
-    <p class="bio">
-      <%= @user.bio %>
-    </p>
-  </div>
-</div>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container"><a class="navbar-brand logo" href="#">
+            <%= image_tag ("2VD-logo.png"), :size => "30"%>
+            </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
+                <ul class="navbar-nav ms-auto" style="margin-right:auto">
+                    <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
+                </ul>
+                <button class="btn btn-primary" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
+            </div>
+        </div>
+    </nav>
 
 <% @images.each do |image| %>
   <div class="flex-child image">
@@ -33,9 +37,58 @@
   </div>
 <% end %>
 
-<div class="eof-buttons">
-  <%= link_to 'Edit Profile', edit_user_path(@user) %> |
-  <%= link_to 'Show All Users', users_path %> |
-  <%= link_to 'Back to Dashboard', root_path %>
-  
-</div>
+<main class="page lanidng-page">
+        <section class="portfolio-block block-intro" style="padding-top: 70px;">
+            <div class="container">
+                <h1 style="padding-bottom: 35px;"><%= @user.username %>'s profile</h1>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-xl-3">
+                        <div class="row">
+                            <div class="col">
+                            <%= image_tag(@user.avatar, class: 'avatar_img', style: 'width:250px;height: 250px') %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p style="padding-top: 20px;"><%= @user.username %></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+                                        </div>
+                                        <div class="row">
+                                            <!--<div class="col"><%= link_to "Sign Out", destroy_admin_session_path %></div>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-9"><img style="height: 280px;width: 280px;" src="assets/img/nature/image1.jpg">
+                    <img style="width: 280px;height: 280px;" src="assets/img/nature/image1.jpg">
+                    <img style="width: 280px;height: 280px;" src="assets/img/nature/image3.jpg">
+                    <img style="width: 280px;height: 280px;" src="assets/img/nature/image8.jpg">
+                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image9.jpg">
+                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image6.jpg">
+                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image5.jpg">
+                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image4.jpg">
+                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image2.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="links"></div>
+            <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
+        </div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

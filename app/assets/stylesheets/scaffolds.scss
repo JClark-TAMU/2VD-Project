@@ -17,11 +17,13 @@ a {
   color: #000; }
 
 a:visited {
-  color: #666; }
+  color: rgb(102, 102, 102); }
 
 a:hover {
-  color: #fff;
-  background-color: #000; }
+  //color: #fff;
+  //background-color: #000; 
+  opacity: 75;
+}
 
 th {
   padding-bottom: 5px; }

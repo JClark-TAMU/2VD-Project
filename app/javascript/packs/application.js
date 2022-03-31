@@ -12,7 +12,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// from theme.js in bootstrap studio
+// added from theme.js in bootstrap studio
 document.querySelectorAll('.datepicker').forEach(function(field) {
 	var picker = new Pikaday({
 		field: field

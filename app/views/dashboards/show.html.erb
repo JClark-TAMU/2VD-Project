@@ -1,4 +1,4 @@
-<!-- from bootstrap studio -->
+<!-- (Signed in) Home Page -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -17,37 +17,39 @@
             </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
                 <ul class="navbar-nav ms-auto" style="margin-right:auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html" style="text-align: center;height: 10px;margin-right: 5px;">Home</a><a class="nav-link active" href="projects-grid-cards.html" style="margin-right: 5px;height: 10px;"></a></li>
-                    <li class="nav-item" style="padding-right: 32px;"><a class="nav-link active" href="projects-grid-cards.html" style="margin-right: 5px;height: 10px;">Meet the Officers</a></li>
-                    <li class="nav-item"><a class="nav-link" href=""><%= link_to 'Members', users_path %></a> 
+                    <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Dropdown</a>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">First Item</a>
+                        <a class="dropdown-item" href="#">Second Item</a>
+                        <a class="dropdown-item" href="#">Third Item</a>
+                        <a class="dropdown-item" href="#">Menu Item</a>
+                        <a class="dropdown-item" href="#">Menu Item</a>
+                        </div>
                     </li>
-                </ul><button class="btn btn-primary" type="button">Sign In</button>
+                </ul>
+                <button class="btn btn-primary" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
+                <!--<button class="btn btn-primary" onclick="location.href='<%= edit_user_path(User.find_by(email: current_admin.email)) %>'" type="button">Create Account</button>-->
             </div>
         </div>
     </nav>
 
-<h1><br><br>You're logged in! Welcome to Web2D!</h1>
-<%= link_to "Sign Out", destroy_admin_session_path %>
-
+<h1><br><br>Welcome to Web2D!</h1>
 <div> 
-<h4>If you have not made an account yet and plan on being a member, follow the link below. </h4>
-<%= link_to 'Create Account Here', edit_user_path(User.find_by(email: current_admin.email)) %> <br>
-<h4>Otherwise, use this link to go to the index: </h4>
-<%= link_to 'Current Users', users_path %> <br>
-<h4>To see only the current officers: </h4>
-<%= link_to 'Officers', officer_path %> <br>
-<h4>To see only the Images: </h4>
-<%= link_to 'Images', images_path %> <br>
-
-<% if User.find_by(email: current_admin.email).portfolio %>
-    <h2>To access your portfolio: </h2>
-    <%= link_to User.find_by(email: current_admin.email).portfolio.title, portfolio_path(User.find_by(email: current_admin.email).portfolio) %> <br>
-<% end %>
+    <h4>If you have not made an account yet and plan on being a member, follow the link below. </h4>
+    <%= link_to 'Create Account Here', edit_user_path(User.find_by(email: current_admin.email)) %> <br>
+    <% if User.find_by(email: current_admin.email).portfolio %>
+        <h4>To access your portfolio: </h4>
+        <%= link_to User.find_by(email: current_admin.email).portfolio.title, portfolio_path(User.find_by(email: current_admin.email).portfolio) %> <br>
+    <% end %>
 </div>
 
-    <main class="page projects-page" style="padding-top: 6%;">
-        <section class="portfolio-block projects-cards" style="padding-top: 50px;padding-bottom: 50px;">
-            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>Current Prompt</strong></h1>
+    <main class="page projects-page" style="padding-top: 3%;">
+        <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
+            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 1%;"><strong>Current Prompt</strong></h1>
             <div class="container" style="padding: 0px;">
                 <div class="heading"></div>
                 <div class="row">
@@ -55,16 +57,25 @@
                         <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <%= image_tag ("image5.jpg")%>
+                                    <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
                                 </div>
                                 <div class="carousel-item">
-                                    <%= image_tag ("avatar.jpg")%>
+                                    <%= image_tag "avatar.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
                                 </div>
                                 <div class="carousel-item">
-                                    <%= image_tag ("2VD-header.jpg")%>
+                                    <%= image_tag "2VD-header.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
                                 </div>
                             </div>
-                            <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+                            <div>
+                                <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </a>
+                            </div>
                             <ol class="carousel-indicators">
                                 <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
                                 <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
