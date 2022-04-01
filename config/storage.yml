@@ -34,7 +34,7 @@ local:
 
 amazon:
   service: S3
-  access_key_id: AKIA6GBUPBHRPHO7SIVM
-  secret_access_key: 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
+  access_key_id:
+  secret_access_key:
   region: us-east-2
   bucket: web2d-dev
