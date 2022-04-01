@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
 </head>
 
-<p id="notice"><%= notice %></p>
-
-<body>
+<body style="background: rgb(252,249,246);">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
         <div class="container"><a class="navbar-brand logo" href="#">
             <%= image_tag ("2VD-logo.png"), :size => "30"%>
@@ -20,11 +18,18 @@
             <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
                 <ul class="navbar-nav ms-auto" style="margin-right:auto">
                     <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Officers</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Account</a>
+                        <div class="dropdown-menu show">
+                            <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
+                            <a class="dropdown-item" href="<%=portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
+                        </div>
+                    </li>
                 </ul>
-                <button class="btn btn-primary" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
+                <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
             </div>
         </div>
     </nav>
@@ -38,8 +43,9 @@
 <% end %>
 
 <main class="page lanidng-page">
-        <section class="portfolio-block block-intro" style="padding-top: 70px;">
+        <section class="portfolio-block block-intro" style="padding-top: 0px;">
             <div class="container">
+                <p id="notice"><%= notice %></p>
                 <h1 style="padding-bottom: 35px;"><%= @user.username %>'s profile</h1>
             </div>
             <div class="container">
@@ -52,29 +58,31 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p style="padding-top: 20px;"><%= @user.username %></p>
+                                <h3 style="padding-top: 20px;"><%= @user.username %></h3>
+                                <h5 style="padding-top: 2px; font-size: 120%; font-style:italic;"><%= @user.role %></h5>
+                                <p style="font-size: 100%;"><%= @user.bio %></p>
                                 <div class="row">
                                     <div class="col">
                                         <div class="row">
-                                            <div class="col"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
-                                        </div>
-                                        <div class="row">
-                                            <!--<div class="col"><%= link_to "Sign Out", destroy_admin_session_path %></div>-->
+                                            <div class="col">
+                                            <button class="btn btn-dark" onclick="location.href='<%= edit_user_path(@user)%>'" type="button">Edit Profile</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-xl-9"><img style="height: 280px;width: 280px;" src="assets/img/nature/image1.jpg">
-                    <img style="width: 280px;height: 280px;" src="assets/img/nature/image1.jpg">
-                    <img style="width: 280px;height: 280px;" src="assets/img/nature/image3.jpg">
-                    <img style="width: 280px;height: 280px;" src="assets/img/nature/image8.jpg">
-                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image9.jpg">
-                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image6.jpg">
-                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image5.jpg">
-                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image4.jpg">
-                    <img style="height: 280px;width: 280px;" src="assets/img/nature/image2.jpg">
+                    <div class="col-xl-6 col-xl-9">
+                    <%= image_tag('image1.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image2.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image3.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image4.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image5.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image6.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image7.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image8.jpg', style: 'width:300px;height: 300px') %>
+                    <%= image_tag('image9.jpg', style: 'width:300px;height: 300px') %>
                     </div>
                 </div>
             </div>
