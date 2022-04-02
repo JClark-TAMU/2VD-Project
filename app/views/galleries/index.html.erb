@@ -13,15 +13,21 @@
   <tbody>
     <% @galleries.each do |gallery| %>
       <tr>
-        <td><%= gallery.prompt %></td>
-        <td><%= link_to 'Show', gallery %></td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%= link_to gallery.prompt, gallery %></td>
+        <% if User.find_by(email: current_admin.email).isAdmin %>
+          <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Gallery', new_gallery_path %>
+<% if User.find_by(email: current_admin.email).isAdmin %>
+  <%= link_to 'Creat New Gallery', new_gallery_path %> |
+<% end %>
+<%= link_to 'Officers', officer_path %> |
+<%= link_to "Back to Dashboard", root_path %> |
+<%= link_to "Sign Out", destroy_admin_session_path %> |
