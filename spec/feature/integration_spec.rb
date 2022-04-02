@@ -273,7 +273,7 @@ RSpec.describe('Galleries', type: :feature) do
     expect(page).to(have_content('untitled'))
     visit galleries_path
     expect(page).to(have_content('Artwork'))
-    click_on 'Show'
+    click_on 'Artwork'
     expect(page).to(have_content('Artwork'))
   end
   it 'galleries cannot be changed by standard users' do

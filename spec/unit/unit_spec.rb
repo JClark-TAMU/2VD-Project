@@ -71,6 +71,7 @@ RSpec.describe(Portfolio, type: :model) do
   end
 end
 
+#Image unit tests
 RSpec.describe(Image, type: :model) do
   subject do
     described_class.new(title: 'Image', caption: 'An Image', showOnPortfolio: 'True', users_id: imageowner.id)
@@ -123,5 +124,23 @@ RSpec.describe(Image, type: :model) do
 
   it 'saves with a Link' do
     expect(subject).to(be_valid)
+  end
+end
+
+# Gallery unit tests
+RSpec.describe(Gallery, type: :model) do
+  subject do
+    described_class.new(prompt: "Trains")
+  end
+
+  # Sunny Day Cases
+  it 'is valid with valid attributes' do
+    expect(subject).to(be_valid)
+  end
+
+  # Rainy Day Cases
+  it 'is not valid without a prompt' do
+    subject.prompt = nil
+    expect(subject).not_to(be_valid)
   end
 end
