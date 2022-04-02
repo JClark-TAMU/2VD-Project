@@ -18,7 +18,7 @@
           <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
           <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        </tr>
+      </tr>
     <% end %>
   </tbody>
 </table>
@@ -26,8 +26,7 @@
 <br>
 
 <% if User.find_by(email: current_admin.email).isAdmin %>
-  <%= link_to 'Creat New Gallery', new_gallery_path %> |
+  <%= link_to 'New Gallery', new_gallery_path %>
 <% end %>
-<%= link_to 'Officers', officer_path %> |
-<%= link_to "Back to Dashboard", root_path %> |
-<%= link_to "Sign Out", destroy_admin_session_path %> |
+<%= link_to "Back to Dashboard", root_path %>
+
