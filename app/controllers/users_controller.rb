@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # end
 
   # GET /users/1 or /users/1.json
-  def show 
+  def show
     @images = user_profile_images
   end
 
@@ -32,15 +32,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
-      
-      if user_admin
-        @user.isAdmin = true
-      end
-      if !user_admin
-        @user.isAdmin = false
-      end
+      params = user_params
+      user_admin = params[:isAdmin]
+      @user.isAdmin = true if user_admin
+      @user.isAdmin = false unless user_admin
       if @user.update(user_params)
-        if !(Portfolio.exists?(user_id: @user.id)) 
+        unless Portfolio.exists?(user_id: @user.id)
           @portfolio = @user.create_portfolio(user_id: @user.id, title: 'untitled')
           @user.portfolioID = @portfolio.id
         end
@@ -55,11 +52,20 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    @email = @user.email
     @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(users_url, notice: 'User was successfully destroyed.') }
-      format.json { head(:no_content) }
+    if @email != sessioned_user.email
+      respond_to do |format|
+        format.html { redirect_to(users_url, notice: 'User was successfully destroyed.') }
+        format.json { head(:no_content) }
+      end
+    end
+    if @email == sessioned_user.email
+      respond_to do |format|
+        format.html { redirect_to(destroy_admin_session_path, notice: 'User was successfully destroyed.') }
+        format.json { head(:no_content) }
+      end
     end
   end
 
@@ -72,11 +78,7 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:username, :email, :role, :bio, portfolio_attributes: [:title, :id])
-  end
-
-  def user_admin
-    params[:isAdmin]
+    params.require(:user).permit(:username, :email, :role, :bio, :isAdmin, portfolio_attributes: %i[title id])
   end
 
   def user_profile_images
