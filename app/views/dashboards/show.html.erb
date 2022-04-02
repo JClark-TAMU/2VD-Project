@@ -10,6 +10,8 @@
 <%= link_to 'Officers', officer_path %> <br>
 <h2>To see only the Galleries: </h2>
 <%= link_to 'Galleries', galleries_path %> <br>
+<h2>To see only the Images: </h2>
+<%= link_to 'Images', images_path %> <br>
 <% if User.find_by(email: current_admin.email).portfolio %>
     <h2>To access your portfolio: </h2>
     <%= link_to User.find_by(email: current_admin.email).portfolio.title, portfolio_path(User.find_by(email: current_admin.email).portfolio) %> <br>
