@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :images
   resources :portfolios
   get '/users/officers', to: 'users#officers', as: 'officer'
+  get '/galleries/submit', to: 'galleries#submit', as: 'submit'
   resources :users
   root to: 'dashboards#show'
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }

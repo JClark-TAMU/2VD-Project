@@ -19,6 +19,11 @@ class GalleriesController < ApplicationController
   def edit
   end
 
+  # GET /galleries/1/submit
+  def submit
+    @user_images = Images.ownedbyname(current_admin.email)
+  end
+
   # POST /galleries or /galleries.json
   def create
     @gallery = Gallery.new(gallery_params)

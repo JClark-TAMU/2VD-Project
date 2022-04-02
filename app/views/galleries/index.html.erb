@@ -15,6 +15,7 @@
       <tr>
         <td><%= gallery.prompt %></td>
         <td><%= link_to 'Show', gallery %></td>
+        <td><%= link_to 'Submit', submit_gallery_path(gallery) %></td>
         <% if User.find_by(email: current_admin.email).isAdmin %>
           <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
           <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
