@@ -1,4 +1,4 @@
-<!-- User's Profile -->
+<!-- viewing a user's profile -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body style="background: rgb(252,249,246);">
@@ -21,13 +22,15 @@
                     <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Officers</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Account</a>
-                        <div class="dropdown-menu show">
-                            <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
-                            <a class="dropdown-item" href="<%=portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
-                        </div>
-                    </li>
+                    <% if User.find_by(email: current_admin.email).portfolio %>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Account</a>
+                            <div class="dropdown-menu show">
+                                <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
+                                <a class="dropdown-item" href="<%=portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
+                            </div>
+                        </li>
+                    <% end %>
                 </ul>
                 <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
             </div>
@@ -65,7 +68,10 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
-                                            <button class="btn btn-dark" onclick="location.href='<%= edit_user_path(@user)%>'" type="button">Edit Profile</button>
+                                            <!-- make it so that only the logged in user can see this button . current_admin.email == who is signed in now . User.find(params[:id]).email == the profile we're looking at,  -->
+                                            <% if User.find(params[:id]).email == current_admin.email %>
+                                                <button class="btn btn-dark" onclick="location.href='<%= edit_user_path(@user)%>'" type="button">Edit Profile</button>
+                                            <% end %>
                                             </div>
                                         </div>
                                     </div>
@@ -88,12 +94,16 @@
             </div>
         </section>
     </main>
+
     <footer class="page-footer">
-        <div class="container">
-            <div class="links"></div>
-            <div class="social-icons"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-instagram-outline"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a></div>
-        </div>
+    <div class="container">
+        <a href="https://discord.gg/YmxbzC79" title="Discord"><i class="fab fa-discord" style="font-size:30px"></i></a>
+        <a href="https://www.facebook.com/groups/926735031021170/" title="Facebook"><i class="fab fa-facebook-f" style="font-size:30px"></i></a>
+        <a href="https://www.instagram.com/tamu_2vd/" title="Instagram"><i class="fab fa-instagram" style="font-size:30px"></i></a>
+        <a href="https://twitter.com/2vdTamu" title="Twitter"><i class="fab fa-twitter" style="font-size:30px"></i></a>
+    </div>
     </footer>
+
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="assets/js/theme.js"></script>
