@@ -51,3 +51,4 @@ yarn-debug.log*
 
 /coverage
 /config/master.key
+/config/storage.yml
