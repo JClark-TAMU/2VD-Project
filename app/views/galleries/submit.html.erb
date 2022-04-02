@@ -1,7 +1,13 @@
 <h1>Which image do you want to submit?</h1>
 
-<% options = options_from_collection_for_select(@user_images, 'id', 'name') %>
-<%= f.select :all_val,  options %>
+<%= form_with(url: add_gallery_path(@gallery), method: "patch") do |f| %>
+    <% options = options_from_collection_for_select(@user_images, 'id', 'title') %>
+    <%= f.select :image,  options %>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
 
 <%= link_to 'Show', @gallery %> |
 <%= link_to 'Back', galleries_path %>

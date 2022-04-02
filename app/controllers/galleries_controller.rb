@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-  before_action :set_gallery, only: %i[ show edit update destroy ]
+  before_action :set_gallery, only: %i[ show edit update destroy gallery submit add]
 
   # GET /galleries or /galleries.json
   def index
@@ -8,6 +8,7 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1 or /galleries/1.json
   def show
+    @images = Image.ingallery(@gallery.id)
   end
 
   # GET /galleries/new
@@ -21,7 +22,17 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1/submit
   def submit
-    @user_images = Images.ownedbyname(current_admin.email)
+    @user_images = Image.ownedby(User.find_by(email: current_admin.email))
+  end
+
+  # PATCH /galleries/1/submit
+  def add
+    Image.find(params[:image]).update(galleries_id: @gallery.id)
+
+    respond_to do |format|
+      format.html { redirect_to galleries_url, notice: params[:image] }
+      format.json { head :no_content }
+    end
   end
 
   # POST /galleries or /galleries.json
