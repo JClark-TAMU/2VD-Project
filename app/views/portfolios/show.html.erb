@@ -19,7 +19,7 @@
 <% @images.each do |image| %>
   <div class="flex-child image">
     <%= link_to image_path(image) do %>
-      <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+      <%= image_tag(image.imageLink.url, class: 'portfolio image', style: 'width:300px') %>
     <% end %>
   </div>
 <% end %>
