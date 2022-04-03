@@ -17,7 +17,7 @@
     <div class="form-row align-items-center">
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputName">Name</label>
-        <input type="text" class="form-control" id="inlineFormInputName" placeholder='<%= form.text_field :full_name %>'>
+        <input type="text" class="form-control" id="inlineFormInputName" <%= form.text_field :full_name %>>
       </div>
       
       <br>
@@ -27,14 +27,14 @@
           <div class="input-group-prepend">
             <div class="input-group-text">@</div>
           </div>
-          <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder='<%= form.text_field :username %>'>
+          <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :username %>>
         </div>
       </div>
 
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Avatar</label>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder='<%= form.text_field :avatar %>'>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :avatar %>>
       </div>
 
       <% if User.find_by(email: current_admin.email).isAdmin %>
@@ -47,13 +47,13 @@
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Role</label>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder='<%= form.text_field :role %>'>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :role %>>
       </div>
 
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Bio</label>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder='<%= form.text_field :bio %>'>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :bio %>>
       </div> 
 
       <br>
