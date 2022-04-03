@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :albums
   resources :galleries do
     member do
       get 'submit'
