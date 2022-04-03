@@ -191,8 +191,8 @@ RSpec.describe('Images', type: :feature) do
     click_on 'Create Image'
     all_images = page.all('img')
     all_images.each do |img|
-      get img[:src]
-      expect(response).to(be_successful)
+      visit img[:src]
+      page.status_code.should be 200
     end
   end
 
