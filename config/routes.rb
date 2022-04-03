@@ -5,7 +5,11 @@ Rails.application.routes.draw do
       patch 'add'
     end
   end
-  resources :images
+  resources :images do
+    member do
+      patch 'unlink'
+    end
+  end
   resources :portfolios
   get '/users/officers', to: 'users#officers', as: 'officer'
   resources :users
