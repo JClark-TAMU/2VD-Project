@@ -5,29 +5,32 @@ Meet the officers in charge of 2VD. [Insert client's decription text here]
 
 <p id="notice"><%= notice %></p>
 <h1>Officers</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th>Bio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.username, user %></td>
-        <td><%= user.email %></td>
-        <td><%= user.role %></td>
-        <td><%= user.bio %></td>
-        <td><%= link_to 'Show', user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section class="text-center border rounded d-xxl-flex align-items-center align-content-center justify-content-xxl-center align-items-xxl-center portfolio-block project">
+    <div class="table-responsive text-center border rounded d-xxl-flex justify-content-center align-items-center align-self-center mx-auto justify-content-xxl-center align-items-xxl-center" style="width: 275px;">
+        <table class="table table-bordered">
+            <thead>
+				<tr>
+				  <th>Username</th>
+				  <th>Email</th>
+				  <th>Role</th>
+				  <th>Bio</th>
+				  <th colspan="3"></th>
+				</tr>
+			</thead>
+            <tbody>
+				<% @users.each do |user| %>
+				  <tr>
+					<td><%= link_to user.username, user %></td>
+					<td><%= user.email %></td>
+					<td><%= user.role %></td>
+					<td><%= user.bio %></td>
+					<td><%= link_to 'Show', user %></td>
+				  </tr>
+				<% end %>
+			</tbody>
+        </table>
+    </div>
+</section>
 
 <%= link_to 'Users', users_path %>
 <%= link_to "Sign Out", destroy_admin_session_path %>
