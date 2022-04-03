@@ -21,19 +21,31 @@
                     <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
                 </ul>
-                <button class="btn btn-warning" type="button" style="color: white;"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post %></button>
+                <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post %></button>
+                <!-- TODO: adding {:style=>'color:#FFFFFF; text-decoration:none;'}to sign in button -->
             </div>
         </div>
     </nav>
 
     <main class="page projects-page" style="padding-top: 6%;">
         <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
-            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 1%;"><strong>Current Prompt</strong></h1>
+            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD Visual Developers</strong></h1>
+                <div class="row" style="padding-top: 2%">
+                    <div class="col-md-6">
+                        <%= image_tag ("MascotsColored.jpg"), :size => "700" %>
+                    </div>
+                    <div class="col-md-6" style="padding: 5%">
+                        <h4 style="text-align: center;">About 2VD:</h4>
+                        <p>Here, we can talk about some stuff related to 2VD. Maybe the dues, meeting dates, and what people who are looking to join should expect. 
+                            The purpose of 2VD is to provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can 
+                            come together and create. It's $20 per semester and we have weekly meetings on Sundays via Discord.
+                    </div>
+                </div>
             <div class="container" style="padding: 0px;">
                 <div class="heading"></div>
                 <div class="row">
                     <div class="col">
-                        <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
+                        <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;"><strong>Current Weekly Prompt</strong></h1>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>

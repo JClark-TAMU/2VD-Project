@@ -52,7 +52,7 @@
                         <h4 style="text-align: center;">About 2VD:</h4>
                         <p>Here, we can talk about some stuff related to 2VD. Maybe the dues, meeting dates, and what people who are looking to join should expect. 
                             The purpose of 2VD is to provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can 
-                            come together and create. It's $20 per semester and we have weekly meetings on Sundays using Discord. :)
+                            come together and create. It's $20 per semester and we have weekly meetings on Sundays via Discord.
                         <% if not User.find_by(email: current_admin.email).portfolio %>
                             <br><br><p>If you plan on becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> to view more of the 2VD website.</p>
                         <% end %></p>
