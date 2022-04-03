@@ -11,11 +11,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
-<body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container"><a class="navbar-brand logo" href="#">
-            <%= image_tag ("2VD-logo.png"), :size => "30"%>
-            </a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+<body style="background: rgb(232, 242, 255)">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
+        <div class="container">
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
                 <ul class="navbar-nav ms-auto" style="margin-right:auto">
                     <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
@@ -29,16 +28,16 @@
 
     <main class="page projects-page" style="padding-top: 6%;">
         <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
-            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD Visual Developers</strong></h1>
+            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
                         <%= image_tag ("MascotsColored.jpg"), :size => "700" %>
                     </div>
                     <div class="col-md-6" style="padding: 5%">
-                        <h4 style="text-align: center;">About 2VD:</h4>
-                        <p>Here, we can talk about some stuff related to 2VD. Maybe the dues, meeting dates, and what people who are looking to join should expect. 
-                            The purpose of 2VD is to provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can 
-                            come together and create. It's $20 per semester and we have weekly meetings on Sundays via Discord.
+                        <h4 style="text-align: center;"><strong>About Us</strong>:</h4>
+                        <p style="padding-top:2%">Howdy and welcome to 2VD! We are an organization focused around the 2D medium and developing our artistic skills. The purpose of 2VD is to 
+                        provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can come together and create. 
+                        Members of 2VD participate in weekly prompt submssions, etc., etc. It's $20 per semester and we meet weekly on Sundays via Discord.
                     </div>
                 </div>
             <div class="container" style="padding: 0px;">

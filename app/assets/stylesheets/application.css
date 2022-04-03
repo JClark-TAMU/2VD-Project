@@ -14,8 +14,18 @@
  *= require_self
  */
 
- .nav-link{
+.nav-link{
    text-decoration: none;
+}
+
+.navbar.center .navbar-inner {
+   text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+   display:inline-block;
+   float: none;
+   vertical-align: top;
 }
 
 /* font-face and body modified to add custom font */
@@ -26,5 +36,5 @@
 
  body {
     background-color: #ffffff;
-    font-family: "Archivo";
+    font-family: var(--bs-body-font-family);
  }

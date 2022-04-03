@@ -12,13 +12,25 @@
   <% end %>
 
 <html>
-  <h1>Edit Profile</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+</head>
+
+  <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;">Edit Profile</h1>
   <form>
     <div class="form-row align-items-center">
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputName">Name</label>
-        <input type="text" class="form-control" id="inlineFormInputName" <%= form.text_field :full_name %>>
+        <input class="form-control" type = "text" id = "full_name" name = "user[full_name]" value="<%= @user.full_name %>">
       </div>
+
       
       <br>
       <div class="col-auto">
@@ -27,14 +39,14 @@
           <div class="input-group-prepend">
             <div class="input-group-text">@</div>
           </div>
-          <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :username %>>
+          <input class="form-control" type = "text" id = "username" name = "user[username]" value = "<%= @user.username %>">
         </div>
       </div>
 
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Avatar</label>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :avatar %>>
+        <input class="form-control" type = "text" id = "avatar" name = "user[avatar]" value = "<%= @user.avatar %>">
       </div>
 
       <% if User.find_by(email: current_admin.email).isAdmin %>
@@ -47,18 +59,18 @@
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Role</label>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :role %>>
+        <input class="form-control" type = "text" id = "role" name = "user[role]" value = "<%= @user.role %>">
       </div>
 
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Bio</label>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" <%= form.text_field :bio %>>
+        <input class="form-control" type = "text" id = "bio" name = "user[bio]" value = "<%= @user.bio %>">
       </div> 
 
       <br>
-      <div class="actions">
-        <br><button class="btn btn-primary" type="button"><%= form.submit %></button>
+      <div class="col-auto" style="padding-top:4%">
+        <input type="submit" class="btn btn-dark" value="Update User" style="display: block; margin: 0 auto;">
       </div>
     </div>
     <% end %>

@@ -12,10 +12,9 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
 
-    <body style="background:rgb(250,250,250);">
-        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-            <div class="container"><a class="navbar-brand logo" href="#">
-                <%= image_tag ("2VD-logo.png"), :size => "30"%></a>
+    <body style="background: rgb(232, 242, 255)">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
+            <div class="container">
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="visually-hidden">Toggle navigation</span>
                     <span class="navbar-toggler-icon"></span>
@@ -43,18 +42,19 @@
 
         <main class="page projects-page" style="padding-top: 7%;">
             <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
-                <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD Visual Developers</strong></h1>
+                <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
                         <%= image_tag ("MascotsColored.jpg"), :size => "700" %>
                     </div>
                     <div class="col-md-6" style="padding: 5%">
-                        <h4 style="text-align: center;">About 2VD:</h4>
-                        <p>Here, we can talk about some stuff related to 2VD. Maybe the dues, meeting dates, and what people who are looking to join should expect. 
-                            The purpose of 2VD is to provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can 
-                            come together and create. It's $20 per semester and we have weekly meetings on Sundays via Discord.
+                        <h4 style="text-align: center;"><strong>About Us</strong>:</h4>
+                        <p style="padding-top:2%">Howdy and welcome to 2VD! We are an organization focused around the 2D medium and developing our artistic skills. The purpose of 2VD is to 
+                        provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can come together and create. 
+                        Members of 2VD participate in weekly prompt submssions, etc., etc. It's $20 per semester and we meet weekly on Sundays via Discord.
                         <% if not User.find_by(email: current_admin.email).portfolio %>
-                            <br><br><p>If you plan on becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> to view more of the 2VD website.</p>
+                            <br><br><p>If you're interested in becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> 
+                            to view more of the 2VD website.</p>
                         <% end %></p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="heading"></div>
                     <div class="row">
                         <div class="col">
-                            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;"><strong>Current Weekly Prompt</strong></h1>
+                            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;">Current Weekly Prompt</h1>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
@@ -103,7 +103,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;"><strong>Previous Prompts</strong></h1>
+                            <h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;">Previous Prompts</h1>
                         </div>
                     </div>
                     <div class="row">
@@ -123,7 +123,7 @@
 
         <footer class="page-footer">
             <div class="social">
-                <p>Follow 2VD on socials:</p>
+                <p>2VD socials:</p>
                 <a href="https://discord.gg/YmxbzC79" title="Discord"><i class="fab fa-discord" style="font-size:30px"></i></a>
                 <a href="https://www.facebook.com/groups/926735031021170/" title="Facebook"><i class="fab fa-facebook-f" style="font-size:30px"></i></a>
                 <a href="https://www.instagram.com/tamu_2vd/" title="Instagram"><i class="fab fa-instagram" style="font-size:30px"></i></a>
