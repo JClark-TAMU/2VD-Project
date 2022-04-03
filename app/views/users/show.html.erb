@@ -37,7 +37,7 @@
     </nav>
 
 <% @images.each do |image| %>
-  <div class="flex-child image">
+  <div class="flex-child image" id="avatar_img">
     <%= link_to image_path(image) do %>
       <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
     <% end %>
@@ -62,7 +62,7 @@
                             <div class="col">
                                 <h3 style="padding-top: 20px;"><%= @user.username %></h3>
                                 <h5 style="padding-top: 2px; font-size: 120%; font-style:italic;"><%= @user.role %></h5>
-                                <p style="font-size: 100%;"><%= @user.bio %></p>
+                                <p style="font-size: 100%;" id = "user_bio"><%= @user.bio %></p>
                                 <div class="row">
                                     <div class="col">
                                         <div class="row">

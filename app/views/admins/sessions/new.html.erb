@@ -20,7 +20,7 @@
                     <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
                 </ul>
-                <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post %></button>
+                <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path, method: :post %></button>
                 <!-- TODO: adding {:style=>'color:#FFFFFF; text-decoration:none;'}to sign in button -->
             </div>
         </div>
@@ -28,6 +28,7 @@
 
     <main class="page projects-page" style="padding-top: 6%;">
         <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
+            <h4 style="text-align: center; margin-top: 0%;">You're Logged out!</h4>
             <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
@@ -41,63 +42,65 @@
                     </div>
                 </div>
             <div class="container" style="padding: 0px;">
-                <div class="heading"></div>
-                <div class="row">
-                    <div class="col">
-                        <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;"><strong>Current Weekly Prompt</strong></h1>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                    <div class="heading"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 1%;margin-bottom: 2%;">Current Weekly Prompt</h1>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%= image_tag "avatar.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%= image_tag "2VD-header.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                    </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <%= image_tag "avatar.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                <div>
+                                    <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </a>
                                 </div>
-                                <div class="carousel-item">
-                                    <%= image_tag "2VD-header.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
-                                </div>
+                                <ol class="carousel-indicators">
+                                    <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                                    <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                                    <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                                </ol>
                             </div>
-                            <div>
-                                <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col" style="">
+                                <button class="btn btn-dark btn-lg" type="button" style="background: rgb(124,57,152);display: block; margin: 0 auto;">Submit</button>
                             </div>
-                            <ol class="carousel-indicators">
-                                <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
-                                <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-                                <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
-                            </ol>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="container">
                     <div class="row">
-                        <div class="col" style="padding-left: 45.5%;padding-top: 30px;"><button class="btn btn-primary" type="button" style="padding-right: 5%;background: rgb(124,57,152);padding-left: 5%;padding-bottom: 2%;padding-top: 2%;font-weight: bold;">Submit</button></div>
+                        <div class="col-md-12">
+                            <h1 style="text-align: center;margin-top: 6%;margin-bottom: 1%;">Previous Prompts</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <%= image_tag ("avatar.jpg"), :size => "400"%>
+                        </div>
+                        <div class="col-md-4">
+                            <%= image_tag ("apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg"), :size => "400"%>
+                        </div>
+                        <div class="col-md-4">
+                            <%= image_tag ("image4.jpg"), :size => "400"%>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;"><strong>Previous Prompts</strong></h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <%= image_tag ("avatar.jpg"), :size => "400"%>
-                    </div>
-                    <div class="col-md-4">
-                        <%= image_tag ("apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg"), :size => "400"%>
-                    </div>
-                    <div class="col-md-4">
-                        <%= image_tag ("image4.jpg"), :size => "400"%>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 

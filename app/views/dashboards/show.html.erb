@@ -36,12 +36,13 @@
                             </li>
                         <% end %>
                     </ul>
-                    <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
+                    <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
             </div>
         </nav>
 
         <main class="page projects-page" style="padding-top: 7%;">
             <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
+                <h4 style="text-align: center; margin-top: 0%;">You're logged in!</h4>
                 <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
@@ -62,7 +63,7 @@
                     <div class="heading"></div>
                     <div class="row">
                         <div class="col">
-                            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;">Current Weekly Prompt</h1>
+                            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 1%;margin-bottom: 2%;">Current Weekly Prompt</h1>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
@@ -94,8 +95,8 @@
                     </div>
                     <div>
                         <div class="row">
-                            <div class="col" style="padding-left: 45.5%;padding-top: 30px;">
-                                <button class="btn btn-dark" type="button" style="padding-right: 5%;background: rgb(124,57,152);padding-left: 5%;padding-bottom: 2%;padding-top: 2%;font-weight: bold;">Submit</button>
+                            <div class="col" style="">
+                                <button class="btn btn-dark btn-lg" type="button" style="background: rgb(124,57,152);display: block; margin: 0 auto;">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -103,7 +104,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 style="text-align: center;margin-top: 40px;margin-bottom: 30px;">Previous Prompts</h1>
+                            <h1 style="text-align: center;margin-top: 6%;margin-bottom: 1%;">Previous Prompts</h1>
                         </div>
                     </div>
                     <div class="row">

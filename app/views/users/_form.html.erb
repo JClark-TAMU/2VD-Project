@@ -34,19 +34,19 @@
       
       <br>
       <div class="col-auto">
-        <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+        <label class="sr-only" for="user_username">Username</label>
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">@</div>
           </div>
-          <input class="form-control" type = "text" id = "username" name = "user[username]" value = "<%= @user.username %>">
+          <input class="form-control" type = "text" id = "user_username" name = "user[username]" value = "<%= @user.username %>">
         </div>
       </div>
 
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Avatar</label>
-        <input class="form-control" type = "text" id = "avatar" name = "user[avatar]" value = "<%= @user.avatar %>">
+        <input class="form-control" type = "text" id = "avatar_img" name = "user[avatar]" value = "<%= @user.avatar %>">
       </div>
 
       <% if User.find_by(email: current_admin.email).isAdmin %>
@@ -59,18 +59,18 @@
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Role</label>
-        <input class="form-control" type = "text" id = "role" name = "user[role]" value = "<%= @user.role %>">
+        <input class="form-control" type = "text" id = "user_role" name = "user[role]" value = "<%= @user.role %>">
       </div>
 
       <br>
       <div class="col-auto">
         <label class="sr-only" for="inlineFormInputGroupUsername">Bio</label>
-        <input class="form-control" type = "text" id = "bio" name = "user[bio]" value = "<%= @user.bio %>">
+        <input class="form-control" type = "text" id = "user_bio" name = "user[bio]" value = "<%= @user.bio %>">
       </div> 
 
       <br>
       <div class="col-auto" style="padding-top:4%">
-        <input type="submit" class="btn btn-dark" value="Update User" style="display: block; margin: 0 auto;">
+        <input type="submit" class="btn btn-dark" id = "Update User" value="Save Changes" style="display: block; margin: 0 auto;">
       </div>
     </div>
     <% end %>
