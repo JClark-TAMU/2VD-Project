@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  resources :galleries
-  resources :images
+  resources :galleries do
+    member do
+      get 'submit'
+      patch 'add'
+    end
+  end
+  resources :images do
+    member do
+      patch 'unlink'
+    end
+  end
   resources :portfolios
   get '/users/officers', to: 'users#officers', as: 'officer'
   resources :users
