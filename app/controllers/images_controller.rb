@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: %i[show edit update destroy]
+  before_action :set_image, only: %i[show edit update destroy unlink]
 
   # GET /images or /images.json
   def index
@@ -16,6 +16,14 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit; end
+
+  def unlink
+    @image.update(galleries_id: nil)
+    respond_to do |format|
+      format.html { redirect_to(image_path(@image), notice: 'Image was successfully removed from gallery.') }
+      format.json { head(:no_content) }
+    end
+  end
 
   # POST /images or /images.json
   def create
