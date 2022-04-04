@@ -14,6 +14,27 @@
  *= require_self
  */
 
- .nav-link{
-    text-decoration: none;
+.nav-link{
+   text-decoration: none;
 }
+
+.navbar.center .navbar-inner {
+   text-align: center;
+}
+
+.navbar.center .navbar-inner .nav {
+   display:inline-block;
+   float: none;
+   vertical-align: top;
+}
+
+/* font-face and body modified to add custom font */
+@font-face {
+    font-family: 'Archivo';
+    src: url('Montserrat-Regular.ttf');
+ }
+
+ body {
+    background-color: #ffffff;
+    font-family: var(--bs-body-font-family);
+ }

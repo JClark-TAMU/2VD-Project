@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Galleries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prompt</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @galleries.each do |gallery| %>
+      <tr>
+        <td><%= gallery.prompt %></td>
+        <td><%= link_to 'Show', gallery %></td>
+        <td><%= link_to 'Submit', submit_gallery_path(gallery) %></td>
+        <% if User.find_by(email: current_admin.email).isAdmin %>
+          <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if User.find_by(email: current_admin.email).isAdmin %>
+  <%= link_to 'New Gallery', new_gallery_path %>
+<% end %>
+<%= link_to "Back to Dashboard", root_path %>

@@ -6,9 +6,18 @@
 </p>
 
 <p>
+  <%= image_tag(@image.imageLink.url, class: 'portfolio image', style: 'width:300px') %>
+</p>
+
+<p>
   <strong>Caption:</strong>
   <%= @image.caption %>
 </p>
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back to Portfolio', portfolio_path(@image.portfolios_id) %>
+<%= link_to 'Back to Portfolio', portfolio_path(@image.portfolios_id) %> 
+
+<% if User.find_by(email: current_admin.email).isAdmin || (User.find_by(email: current_admin.email).id == @image.users_id) %>
+  | <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' } %>
+  | <%= link_to 'Unlink', unlink_image_path(@image), method: :patch, data: { confirm: 'Are you sure?' } %>
+<% end %>

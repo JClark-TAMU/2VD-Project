@@ -1,9 +1,120 @@
-<div class="container d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="margin-top: 100px;">
-    <section class="text-center bg-dark shadow d-flex d-xxl-flex flex-column justify-content-xxl-center align-items-xxl-center" style="height: 378px;width: 681px;border-radius: 34px;border-width: 1px;">
-		<span class="d-xxl-flex justify-content-xxl-center align-items-xxl-center" style="color: #ffffff;text-align: center;height: 23px;width: 66.641px;">OH NO! </span>
-		<span style="color: #ffffff;">You need to log into a Gmail or TAMU email before entering this site.</span>
-		<button class="btn btn-primary" type="button" style="padding: 10px 16px;margin: 15px;">
-			<%= link_to "Login", admin_google_oauth2_omniauth_authorize_path, method: :post, style: 'text-decoration: none; color: #FFFFFF' %>
-		</button>
-	</section>
-</div>
+<!-- (Signed out) Home Page -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Projects - Brand</title>
+    <link rel="stylesheet" href="app/assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="app/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body style="background: rgb(232, 242, 255)">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
+        <div class="container">
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
+                <ul class="navbar-nav ms-auto" style="margin-right:auto">
+                    <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
+                </ul>
+                <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in with Google", admin_google_oauth2_omniauth_authorize_path, method: :post %></button>
+                <!-- TODO: adding {:style=>'color:#FFFFFF; text-decoration:none;'}to sign in button -->
+            </div>
+        </div>
+    </nav>
+
+    <main class="page projects-page" style="padding-top: 6%;">
+        <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
+            <h4 style="text-align: center; margin-top: 0%;">You're Logged out!</h4>
+            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
+                <div class="row" style="padding-top: 2%">
+                    <div class="col-md-6">
+                        <%= image_tag ("MascotsColored.jpg"), :size => "700" %>
+                    </div>
+                    <div class="col-md-6" style="padding: 5%">
+                        <h4 style="text-align: center;"><strong>About Us</strong>:</h4>
+                        <p style="padding-top:2%">Howdy and welcome to 2VD! We are an organization focused around the 2D medium and developing our artistic skills. The purpose of 2VD is to 
+                        provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can come together and create. 
+                        Members of 2VD participate in weekly prompt submssions, etc., etc. It's $20 per semester and we meet weekly on Sundays via Discord.
+                    </div>
+                </div>
+            <div class="container" style="padding: 0px;">
+                    <div class="heading"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 1%;margin-bottom: 2%;">Current Weekly Prompt</h1>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%= image_tag "avatar.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%= image_tag "2VD-header.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                    </div>
+                                </div>
+                                <div>
+                                    <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </a>
+                                </div>
+                                <ol class="carousel-indicators">
+                                    <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                                    <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                                    <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col" style="">
+                                <button class="btn btn-dark btn-lg" type="button" style="background: rgb(124,57,152);display: block; margin: 0 auto;">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 style="text-align: center;margin-top: 6%;margin-bottom: 1%;">Previous Prompts</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <%= image_tag ("avatar.jpg"), :size => "400"%>
+                        </div>
+                        <div class="col-md-4">
+                            <%= image_tag ("apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg"), :size => "400"%>
+                        </div>
+                        <div class="col-md-4">
+                            <%= image_tag ("image4.jpg"), :size => "400"%>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+    <div class="container">
+        <a href="https://discord.gg/YmxbzC79" title="Discord"><i class="fab fa-discord" style="font-size:30px"></i></a>
+        <a href="https://www.facebook.com/groups/926735031021170/" title="Facebook"><i class="fab fa-facebook-f" style="font-size:30px"></i></a>
+        <a href="https://www.instagram.com/tamu_2vd/" title="Instagram"><i class="fab fa-instagram" style="font-size:30px"></i></a>
+        <a href="https://twitter.com/2vdTamu" title="Twitter"><i class="fab fa-twitter" style="font-size:30px"></i></a>
+    </div>
+    </footer>
+
+    <script src="app/assets/stylesheets/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="app/assets/javascript/packs/application.js"></script>
+
+</body>
