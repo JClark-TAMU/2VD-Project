@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: %i[ show edit update destroy ]
+  before_action :set_album, only: %i[ show edit update destroy add link]
 
   # GET /albums or /albums.json
   def index
@@ -31,18 +31,21 @@ class AlbumsController < ApplicationController
   end
 
   # PATCH /albums/1/link
-  def add
+  def link
     Image.find(params[:image]).update(albums_id: @album.id)
 
     respond_to do |format|
-      format.html { redirect_to show_album_url(@album), notice: params[:image] }
+      format.html { redirect_to album_url(@album), notice: params[:image] }
       format.json { head :no_content }
     end
   end
 
   # POST /albums or /albums.json
   def create
+    @user = User.find_by(email: current_admin.email)
     @album = Album.new(album_params)
+    @album.user_id = @user.id
+    @album.portfolio_id = Portfolio.find_by(user_id: @album.user_id).id
 
     respond_to do |format|
       if @album.save
@@ -86,6 +89,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:name, :size)
+      params.require(:album).permit(:name, :caption)
     end
 end
