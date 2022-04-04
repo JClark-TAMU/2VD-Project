@@ -14,6 +14,7 @@ class Image < ApplicationRecord
     scope :ownedby, ->(user) {where(users_id: user)}
     scope :inportfolio, ->(portfolio) {where(portfolios_id: portfolio)}
     scope :ingallery, ->(gallery) {where(galleries_id: gallery)}
+    scope :inalbum, ->(album) {where(albums_id: album)}
     scope :publicimages, -> {where(showOnPortfolio: true)}
     scope :hiddenimages, -> {where(showOnPortfolio: false)}
 end

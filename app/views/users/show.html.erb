@@ -34,8 +34,10 @@
 <% end %>
 
 <div class="eof-buttons">
-  <%= link_to 'Edit Profile', edit_user_path(@user) %> |
+  <% if User.find_by(email: current_admin.email).isAdmin %>
+    <%= link_to 'Edit Profile', edit_user_path(@user) %> |
+  <% end %>
+  <%= link_to 'To Albums', user_album_path(@user) %> |
   <%= link_to 'Show All Users', users_path %> |
   <%= link_to 'Back to Dashboard', root_path %>
-  
 </div>

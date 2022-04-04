@@ -6,8 +6,14 @@ class AlbumsController < ApplicationController
     @albums = Album.all
   end
 
+  # GET /albums/1/user or /albums/1/user.json
+  def user
+    @albums = Album.ownedby(params[:id])
+  end
+
   # GET /albums/1 or /albums/1.json
   def show
+    @images = Image.inalbum(@album.id)
   end
 
   # GET /albums/new
@@ -17,6 +23,21 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
+  end
+
+  # GET /albums/1/add
+  def add
+    @user_images = Image.ownedby(User.find_by(email: current_admin.email))
+  end
+
+  # PATCH /albums/1/link
+  def add
+    Image.find(params[:image]).update(albums_id: @album.id)
+
+    respond_to do |format|
+      format.html { redirect_to show_album_url(@album), notice: params[:image] }
+      format.json { head :no_content }
+    end
   end
 
   # POST /albums or /albums.json

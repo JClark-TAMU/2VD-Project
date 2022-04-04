@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :albums
+  resources :albums do
+    member do
+      get 'add'
+      get 'user'
+      patch 'link'
+    end
+  end
   resources :galleries do
     member do
       get 'submit'
