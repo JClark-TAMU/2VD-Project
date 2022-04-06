@@ -75,7 +75,7 @@ class AlbumsController < ApplicationController
   def destroy
     # remove all links from image to album
     @images = Image.ingallery(@album)
-    @images do |image|
+    @images.each do |image|
       image.update(albums_id: nil)
     end
     # destory album

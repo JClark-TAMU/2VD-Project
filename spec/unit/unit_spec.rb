@@ -71,6 +71,44 @@ RSpec.describe(Portfolio, type: :model) do
   end
 end
 
+# Portfolio unit tests
+RSpec.describe(Album, type: :model) do
+  subject do
+    described_class.new(name: 'Panels', caption: 'panels I drew', user_id: userOwner.id, portfolio_id: portfolioOwner.id)
+  end
+
+  let(:userOwner) do
+    User.create(username: 'ben', email: 'ben@tamu.edu',
+                isAdmin: 'True', role: 'Officer', bio: 'I\'m Ben'
+    )
+  end
+
+  let(:portfolioOwner) do
+    Portfolio.create(title: 'images by me', user_id: userOwner.id)
+  end
+
+  # Sunny Day Cases
+  it 'is valid with valid attributes' do
+    expect(subject).to(be_valid)
+  end
+
+  # Rainy Day Cases
+  it 'is not valid without a title' do
+    subject.name = nil
+    expect(subject).not_to(be_valid)
+  end
+
+  it 'is not valid without a user_id' do
+    subject.user_id = nil
+    expect(subject).not_to(be_valid)
+  end
+
+  it 'is not valid without a portfolio_id' do
+    subject.portfolio_id = nil
+    expect(subject).not_to(be_valid)
+  end
+end
+
 RSpec.describe(Image, type: :model) do
   subject do
     described_class.new(title: 'Image', caption: 'An Image', showOnPortfolio: 'True', users_id: imageowner.id)

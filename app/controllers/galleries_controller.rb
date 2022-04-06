@@ -67,7 +67,7 @@ class GalleriesController < ApplicationController
   def destroy
     # remove all links from image to gallery
     @images = Image.ingallery(@gallery)
-    @images do |image|
+    @images.each do |image|
       image.update(galleries_id: nil)
     end
     # destory gallery
