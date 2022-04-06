@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :images do
     member do
       patch 'unlink'
+      patch 'unalbum'
     end
   end
   resources :portfolios
