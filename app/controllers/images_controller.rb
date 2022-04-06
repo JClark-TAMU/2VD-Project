@@ -25,6 +25,14 @@ class ImagesController < ApplicationController
     end
   end
 
+  def unalbum
+    @image.update(albums_id: nil)
+    respond_to do |format|
+      format.html { redirect_to(image_path(@image), notice: 'Image was successfully removed from gallery.') }
+      format.json { head(:no_content) }
+    end
+  end
+
   # POST /images or /images.json
   def create
     @user = User.find_by(email: current_admin.email)

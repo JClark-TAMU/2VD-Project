@@ -73,6 +73,12 @@ class AlbumsController < ApplicationController
 
   # DELETE /albums/1 or /albums/1.json
   def destroy
+    # remove all links from image to album
+    @images = Image.ingallery(@album)
+    @images do |image|
+      image.update(albums_id: nil)
+    end
+    # destory album
     @album.destroy
 
     respond_to do |format|
