@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,14 +26,13 @@
   <form>
     <div class="form-row align-items-center">
       <div class="col-auto">
-        <label class="sr-only" for="inlineFormInputName">Name</label>
+        <label for="full_name">Name</label>
         <input class="form-control" type = "text" id = "full_name" name = "user[full_name]" value="<%= @user.full_name %>">
       </div>
 
-      
       <br>
       <div class="col-auto">
-        <label class="sr-only" for="user_username">Username</label>
+        <label for="user_username">Username</label>
         <div class="input-group">
           <div class="input-group-prepend">
             <div class="input-group-text">@</div>
@@ -45,8 +43,8 @@
 
       <br>
       <div class="col-auto">
-        <label class="sr-only" for="inlineFormInputGroupUsername">Avatar</label>
-        <input class="form-control" type = "text" id = "avatar_img" name = "user[avatar]" value = "<%= @user.avatar %>">
+        <label for="avatar_url">Avatar</label>
+        <input class="form-control" type = "text" id = "avatar_url" name = "user[avatar]" value = "<%= @user.avatar %>">
       </div>
 
       <% if User.find_by(email: current_admin.email).isAdmin %>
@@ -58,13 +56,13 @@
 
       <br>
       <div class="col-auto">
-        <label class="sr-only" for="inlineFormInputGroupUsername">Role</label>
+        <label for="user_role">Role</label>
         <input class="form-control" type = "text" id = "user_role" name = "user[role]" value = "<%= @user.role %>">
       </div>
 
       <br>
       <div class="col-auto">
-        <label class="sr-only" for="inlineFormInputGroupUsername">Bio</label>
+        <label for="user_bio">Bio</label>
         <input class="form-control" type = "text" id = "user_bio" name = "user[bio]" value = "<%= @user.bio %>">
       </div> 
 
@@ -76,4 +74,3 @@
     <% end %>
   </form>
 </html>
-
