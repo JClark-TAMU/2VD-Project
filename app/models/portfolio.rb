@@ -5,4 +5,5 @@ class Portfolio < ApplicationRecord
     #portfolio relations
     belongs_to :user
     has_many :image
+    has_many :Album
 end

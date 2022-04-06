@@ -351,6 +351,53 @@ RSpec.describe('Galleries', type: :feature) do
   end
 end
 
+RSpec.describe('Albums', type: :feature) do
+  before do
+    Rails.application.env_config['devise.mapping'] = Devise.mappings[:user]
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+    visit root_path
+    click_link 'Sign in with Google'
+  end
+  it 'albums can be changed by officers' do
+    currentUser = User.find_by(email: 'britwiz@tamu.edu')
+    currentUser.update(isAdmin: true)
+    tempUser = User.create!(username: 'otheruser', email: 'britwiz@gmail.com', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    tempPort = Portfolio.create!(title: 'untitled', user_id: tempUser.id)
+    tempAlbum = Album.create!(name: 'panels', caption: 'panels I drew', user_id: tempUser.id, portfolio_id: tempPort.id)
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit albums_path
+    expect(page).to(have_content('panels'))
+    expect(page).to(have_content('Edit'))
+    click_on 'Edit'
+    fill_in 'album_name', with: 'cool images'
+    fill_in 'album_caption', with: 'cool images'
+    click_on 'Update Album'
+    expect(page).to(have_content('cool images'))
+    expect(page).not_to(have_content('panels'))
+  end
+  it 'albums can be deleted by officers' do
+    currentUser = User.find_by(email: 'britwiz@tamu.edu')
+    currentUser.update(isAdmin: true)
+    tempUser = User.create!(username: 'otheruser', email: 'britwiz@gmail.com', isAdmin: 'False', role: 'Member', bio: 'I am a frog')
+    tempPort = Portfolio.create!(title: 'untitled', user_id: tempUser.id)
+    tempAlbum = Album.create!(name: 'panels', caption: 'panels I drew', user_id: tempUser.id, portfolio_id: tempPort.id)
+    visit edit_user_path(tempUser)
+    fill_in 'user_username', with: 'Froggers'
+    click_on 'Update User'
+    visit users_path
+    expect(page).to(have_content('untitled'))
+    visit albums_path
+    expect(page).to(have_content('panels'))
+    expect(page).to(have_content('Destroy'))
+    click_on 'Destroy'
+    expect(page).not_to(have_content('panels'))
+  end
+end
+
 # ALL TESTS SHOULD BE PLACED ABOVE THIS ONE
 # Otherwise, they will not work
 RSpec.describe('Logging In and Logging Out', type: :feature) do
