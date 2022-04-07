@@ -33,7 +33,7 @@
                             <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Account</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
-                                <a class="dropdown-item" href="<%=portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
+                                <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
                             </div>
                         </li>
                     <% end %>
