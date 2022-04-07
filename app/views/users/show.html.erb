@@ -34,6 +34,7 @@
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
                                 <a class="dropdown-item" href="<%=portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
+                                <a class="dropdown-item" href="<%=user_album_path(@user)%>">Albums</a>      
                             </div>
                         </li>
                     <% end %>
@@ -43,15 +44,15 @@
         </div>
     </nav>
 
-<% @images.each do |image| %>
-  <div class="flex-child image" id="avatar_img">
-    <%= link_to image_path(image) do %>
-      <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+    <% @images.each do |image| %>
+    <div class="flex-child image" id="avatar_img">
+        <%= link_to image_path(image) do %>
+        <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+        <% end %>
+    </div>
     <% end %>
-  </div>
-<% end %>
 
-<main class="page lanidng-page">
+    <main class="page lanidng-page">
         <section class="portfolio-block block-intro" style="padding-top: 0px;">
             <div class="container">
                 <p id="notice"><%= notice %></p>
@@ -74,7 +75,6 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
-                                            <!-- make it so that only the logged in user can see this button . current_admin.email == who is signed in now . User.find(params[:id]).email == the profile we're looking at,  -->
                                             <% if User.find(params[:id]).email == current_admin.email %>
                                                 <button class="btn btn-dark" onclick="location.href='<%= edit_user_path(@user)%>'" type="button" id = "Edit Profile">Edit Profile</button>
                                             <% end %>

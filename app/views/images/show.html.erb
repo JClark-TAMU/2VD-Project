@@ -19,5 +19,6 @@
 
 <% if User.find_by(email: current_admin.email).isAdmin || (User.find_by(email: current_admin.email).id == @image.users_id) %>
   | <%= link_to 'Destroy', @image, method: :delete, data: { confirm: 'Are you sure?' } %>
-  | <%= link_to 'Unlink', unlink_image_path(@image), method: :patch, data: { confirm: 'Are you sure?' } %>
+  | <%= link_to 'Unlink from Gallery', unlink_image_path(@image), method: :patch, data: { confirm: 'Are you sure?' } %>
+  | <%= link_to 'Unlink for Album', unalbum_image_path(@image), method: :patch, data: { confirm: 'Are you sure?' } %>
 <% end %>

@@ -21,10 +21,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
-                    <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post %></button>
+                    <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post , :style=>'color:#FFFFFF; text-decoration:none;'%></button>
                 </ul>
-                
-                <!-- TODO: adding {:style=>'color:#FFFFFF; text-decoration:none;'}to sign in button -->
             </div>
         </div>
     </nav>
