@@ -18,14 +18,12 @@
    text-decoration: none;
 }
 
-.navbar.center .navbar-inner {
-   text-align: center;
-}
-
-.navbar.center .navbar-inner .nav {
-   display:inline-block;
-   float: none;
-   vertical-align: top;
+.carousel-item img{
+   width: 100%;
+   height: 1000px;
+   max-height: 1000px;
+   margin: auto; 
+   display: block;
 }
 
 /* font-face and body modified to add custom font */

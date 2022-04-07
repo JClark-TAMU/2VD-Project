@@ -3,24 +3,27 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <title>Projects - Brand</title>
+        <title>Home - 2VD</title>
         <link rel="stylesheet" href="app/assets/stylesheets/bootstrap.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&display=swap">
         <link rel="stylesheet" href="app/assets/fonts/ionicons.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        
     </head>
 
     <body style="background: rgb(232, 242, 255)">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
             <div class="container">
+                <a class="navbar-brand logo" href="#"></a>
+                <%= image_tag ("2VD-logo.png"), :size => "40" %>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="visually-hidden">Toggle navigation</span>
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav" style="text-align: left;">
-                    <ul class="navbar-nav ms-auto" style="margin-right:auto">
+                <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right;">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Officers</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
@@ -29,50 +32,65 @@
                         <% if User.find_by(email: current_admin.email).portfolio %>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Account</a>
-                                <div class="dropdown-menu show">
+                                <div class="dropdown-menu">
                                     <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
                                     <a class="dropdown-item" href="<%=portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
                                 </div>
                             </li>
                         <% end %>
+                        <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
                     </ul>
-                    <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
+                    
             </div>
         </nav>
 
         <main class="page projects-page" style="padding-top: 7%;">
             <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
                 <h4 style="text-align: center; margin-top: 0%;">You're logged in!</h4>
+                <% if not User.find_by(email: current_admin.email).portfolio %>
+                    <p style="text-align: center; margin-top: 0%;">If you're interested in becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> 
+                    to view more of the 2VD website.</p>
+                <% end %>
                 <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
-                        <%= image_tag ("MascotsColored.jpg"), :size => "700" %>
+                        <%= image_tag ("2VD-logo.png"), :size => "700" %>
                     </div>
                     <div class="col-md-6" style="padding: 5%">
                         <h4 style="text-align: center;"><strong>About Us</strong>:</h4>
                         <p style="padding-top:2%">Howdy and welcome to 2VD! We are an organization focused around the 2D medium and developing our artistic skills. The purpose of 2VD is to 
                         provide a space where those with a shared interest in comics, animation, graphic novels, and concept art can come together and create. 
                         Members of 2VD participate in weekly prompt submssions, etc., etc. It's $20 per semester and we meet weekly on Sundays via Discord.
-                        <% if not User.find_by(email: current_admin.email).portfolio %>
-                            <br><br><p>If you're interested in becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> 
-                            to view more of the 2VD website.</p>
-                        <% end %></p>
+                        </p>
                     </div>
                 </div>
                 <div class="container" style="padding: 0px;">
-                    <div class="heading"></div>
+                <div class="heading"></div>
                     <div class="row">
                         <div class="col">
                             <div class="carousel slide" data-bs-ride="carousel" id="carousel-1"><h1 style="text-align: center;margin-top: 1%;margin-bottom: 2%;">Current Weekly Prompt</h1>
                                 <div class="carousel-inner">
+                                    <ol class="carousel-indicators">
+                                        <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
+                                        <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
+                                        <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                                        <li data-bs-target="#carousel-1" data-bs-slide-to="3"></li>
+                                        <li data-bs-target="#carousel-1" data-bs-slide-to="4"></li>
+                                    </ol>
                                     <div class="carousel-item active">
-                                        <%= image_tag "image5.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                        <%= image_tag "MascotsColored.jpg"%>
                                     </div>
                                     <div class="carousel-item">
-                                        <%= image_tag "avatar.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                        <%= image_tag "ConceptArtMascot.jpg" %>
                                     </div>
                                     <div class="carousel-item">
-                                        <%= image_tag "2VD-header.jpg", style: 'height:50vw;width:100vw;margin-bottom:20px;' %>
+                                        <%= image_tag "StoryboardingMascot.jpg" %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%= image_tag "ShortComicsMascot.jpg" %>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <%= image_tag "GraphicNovelMascot.jpg" %>
                                     </div>
                                 </div>
                                 <div>
@@ -85,18 +103,13 @@
                                         <span class="visually-hidden">Next</span>
                                     </a>
                                 </div>
-                                <ol class="carousel-indicators">
-                                    <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
-                                    <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-                                    <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
-                                </ol>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="row">
-                            <div class="col" style="">
-                                <button class="btn btn-dark btn-lg" type="button" style="background: rgb(124,57,152);display: block; margin: 0 auto;">Submit</button>
+                            <div class="col" style="padding-top:2%">
+                                <button class="btn btn-dark btn-lg" type="button" style="display: block; margin: 0 auto;">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -104,18 +117,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 style="text-align: center;margin-top: 6%;margin-bottom: 1%;">Previous Prompts</h1>
+                            <h1 style="text-align: center;margin-top: 6%;margin-bottom: 2%;">Previous Prompts</h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <%= image_tag ("avatar.jpg"), :size => "400"%>
+                            <%= image_tag ("MascotsColored.jpg"), :size => "400"%>
                         </div>
                         <div class="col-md-4">
-                            <%= image_tag ("apple_iphone-12-spring21_purple_04202021_big.jpg.large.jpg"), :size => "400"%>
+                            <%= image_tag ("ConceptArtMascot.jpg"), :size => "400"%>
                         </div>
                         <div class="col-md-4">
-                            <%= image_tag ("image4.jpg"), :size => "400"%>
+                            <%= image_tag ("GraphicNovelMascot.jpg"), :size => "400"%>
                         </div>
                     </div>
                 </div>
@@ -136,5 +149,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
         <script src="app/assets/javascript/channels/bootstrap.min.js"></script>
         <script src="app/assets/javascript/packs/application.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     </body>
 </html>
