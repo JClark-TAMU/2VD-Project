@@ -1,0 +1,13 @@
+<h1>Which image do you want to submit?</h1>
+
+<%= form_with(url: link_album_path(@album), method: "patch") do |f| %>
+    <% options = options_from_collection_for_select(@user_images, 'id', 'title') %>
+    <%= f.select :image,  options %>
+
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+<% end %>
+
+<%= link_to 'Show', @album %> |
+<%= link_to 'Back', album_path %>
