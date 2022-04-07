@@ -26,12 +26,11 @@
     <%= form.text_field :avatar %>
   </div>
 
-<div class="field">
+  <% if User.find_by(email: current_admin.email).isAdmin %>
+    <div class="field">
       <%= form.label :isAdmin %>
       <%= form.check_box :isAdmin %>
     </div>
-  <% if User.find_by(email: current_admin.email).isAdmin %>
-    
   <% end %>
 
   <div class="field">
