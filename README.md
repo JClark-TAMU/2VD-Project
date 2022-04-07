@@ -72,6 +72,10 @@ The application can be seen using a browser and navigating to http://localhost:3
 
 \*\* Add instructions/description if your application requires it.
 
+## Amazon Web Services S3 Configuration
+
+- This application has its own user group, keys and S3 bucket. All of these things can be managed from the AWS managment console in your browser
+
 ## Deployment
 
 \*\* Add instructions about how to deploy to Heroku
