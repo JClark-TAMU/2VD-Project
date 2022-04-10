@@ -29,9 +29,9 @@
                         <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
-                        <% if User.find_by(email: current_admin.email).portfolio %>
+                        <% if User.find_by(email: current_admin.email) %>
                             <li class="nav-item dropdown">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown">Account</a>
+                                <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown">Account</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
                                     <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
@@ -43,51 +43,28 @@
             </div>
         </nav>
 
-      <main class="page projects-page" style="padding-top: 7%;">
-        <p id="notice"><%= notice %></p>
-
-        <h1>Galleries</h1>
-
-        <table>
-          <thead>
-            <tr>
-              <th>Prompt</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @galleries.each do |gallery| %>
-              <tr>
-                <td><%= gallery.prompt %></td>
-                <td><%= link_to 'Show', gallery %></td>
-                <td><%= link_to 'Submit', submit_gallery_path(gallery) %></td>
-                <% if User.find_by(email: current_admin.email).isAdmin %>
-                  <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-                  <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <main class="page projects-page" style="padding-top: 3%;">
+        <section style="padding-top:3%">
+          <%# <% if User.find_by(email: current_admin.email).isAdmin %> 
+            <button class="btn btn-dark float-end" onclick="location.href='<%= new_gallery_path %>'" type="button" id="New Gallery" name="New Gallery">Create Gallery</button>
+          <%# <% end %>
+        </section>
+        <section class="portfolio-block projects compact-grid" style="padding-top:4%">
+            <div class="heading">
+                <p id="notice"><%= notice %></p>
+                <h1 style="font-weight:bold;">Galleries</h1>
+                <h5 style="padding-bottom:2%;">Explore 2VD Prompts:</h5>
+                <% @galleries.each do |gallery| %>
+                    <%= link_to gallery.prompt, gallery, :style=>'color:#000000; text-decoration:underline; font-size:150%;'%>
+                    <br>
+                    <% if User.find_by(email: current_admin.email).isAdmin %>
+                    <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+                    <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
                 <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-          <br>
-
-          <% if User.find_by(email: current_admin.email).isAdmin %>
-            <%= link_to 'New Gallery', new_gallery_path %>
-          <% end %>
-          <%= link_to "Back to Dashboard", root_path %>
-      </main>
-
-        <footer class="page-footer">
-            <div class="social">
-                <p>2VD socials:</p>
-                <a href="https://discord.gg/YmxbzC79" title="Discord"><i class="fab fa-discord" style="font-size:30px"></i></a>
-                <a href="https://www.facebook.com/groups/926735031021170/" title="Facebook"><i class="fab fa-facebook-f" style="font-size:30px"></i></a>
-                <a href="https://www.instagram.com/tamu_2vd/" title="Instagram"><i class="fab fa-instagram" style="font-size:30px"></i></a>
-                <a href="https://twitter.com/2vdTamu" title="Twitter"><i class="fab fa-twitter" style="font-size:30px"></i></a>
             </div>
-        </footer>
+        </section>
+      </main>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
