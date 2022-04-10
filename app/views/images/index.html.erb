@@ -28,7 +28,7 @@
                         <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
-                        <% if User.find_by(email: current_admin.email) %>
+                        <% if User.find_by(email: current_admin.email).portfolio %>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown">Account</a>
                                 <div class="dropdown-menu">
@@ -44,7 +44,9 @@
 
       <main class="page projects-page" style="padding-top: 3%;">
         <section style="padding-top:3%">
+          <% if User.find_by(email: current_admin.email).portfolio %>
           <button class="btn btn-dark float-end" onclick="location.href='<%= new_image_path %>'" type="button" id="New Image" name="New Image">Add Image</button>
+          <% end %>
         </section>
         <section class="portfolio-block projects compact-grid" style="padding-top:4%">
             <div class="heading">

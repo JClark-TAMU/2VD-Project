@@ -30,7 +30,7 @@
                         <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
-                        <% if User.find_by(email: current_admin.email) %>
+                        <% if User.find_by(email: current_admin.email).portfolio %>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown" href="#">Account</a>
                                 <div class="dropdown-menu">

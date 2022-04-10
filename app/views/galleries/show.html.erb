@@ -28,12 +28,12 @@
                         <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
-                        <% if User.find_by(email: current_admin.email) %>
+                        <% if User.find_by(email: current_admin.email).portfolio %>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown">Account</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
-                                    <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
+                                    <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email)) %>">Portfolio</a>
                                 </div>
                             </li>
                         <% end %>
@@ -51,7 +51,9 @@
             <div class="heading">
                 <p id="notice"><%= notice %></p>
                 <h1 style="font-style:italic; font-weight:bold; padding-bottom:1%;"><%= @gallery.prompt %></h1>
-                <button class="btn btn-dark" onclick="location.href='<%= submit_gallery_path(@gallery) %>'" type="button" id="Submit" name="Submit">Submit</button>
+                <% if User.find_by(email: current_admin.email).portfolio %>
+                  <button class="btn btn-dark" onclick="location.href='<%= submit_gallery_path(@gallery) %>'" type="button" id="Submit" name="Submit">Submit</button>
+                <% end %>
             </div>
             <div class="row g-0">
                   <% @images.each do |image| %>

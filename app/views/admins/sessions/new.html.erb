@@ -19,8 +19,6 @@
         <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right;">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Meet the Officers</a></li>
                     <button class="btn btn-dark" type="button" style="color: white;"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post , :style=>'color:#FFFFFF; text-decoration:none;'%></button>
                 </ul>
             </div>
@@ -30,6 +28,7 @@
     <main class="page projects-page" style="padding-top: 6%;">
         <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
             <h4 style="text-align: center; margin-top: 0%;">You're Logged out!</h4>
+            <p style="text-align: center; margin-top: 0%;">Sign in to view more of the 2VD website.</p>
             <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
@@ -85,13 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="row">
-                            <div class="col" style="padding-top:2%">
-                                <button class="btn btn-dark btn-lg" type="button" style="display: block; margin: 0 auto;">Submit</button>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="container">
                     <div class="row">

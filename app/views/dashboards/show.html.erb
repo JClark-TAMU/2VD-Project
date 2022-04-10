@@ -29,7 +29,7 @@
                         <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
-                        <% if User.find_by(email: current_admin.email) %>
+                        <% if User.find_by(email: current_admin.email).portfolio %>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown" href="#">Account</a>
                                 <div class="dropdown-menu">
@@ -49,7 +49,7 @@
                 <h4 style="text-align: center; margin-top: 0%;">You're logged in!</h4>
                 <% if not User.find_by(email: current_admin.email).portfolio %>
                     <p style="text-align: center; margin-top: 0%;">If you're interested in becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> 
-                    to view more of the 2VD website.</p>
+                    to create a portfolio and upload your art!</p>
                 <% end %>
                 <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
@@ -106,13 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="row">
-                            <div class="col" style="padding-top:2%">
-                                <button class="btn btn-dark btn-lg" type="button" style="display: block; margin: 0 auto;">Submit</button>
-                            </div>
-                        </div>
-                    </div>
+                    <%# submit button %>
                 </div>
                 <div class="container">
                     <div class="row">
