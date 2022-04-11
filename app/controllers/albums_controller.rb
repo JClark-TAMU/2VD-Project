@@ -38,7 +38,7 @@ class AlbumsController < ApplicationController
     Image.find(params[:image]).update(albums_id: @album.id)
 
     respond_to do |format|
-      format.html { redirect_to user_album_url(@album.user_id), notice: params[:image] }
+      format.html { redirect_to user_album_url(@album.user_id), notice: "Image was successfully linked." }
       format.json { head :no_content }
     end
   end
@@ -77,7 +77,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1 or /albums/1.json
   def destroy
     # remove all links from image to album
-    @images = Image.ingallery(@album)
+    @images = Image.inalbum(@album)
     @images.each do |image|
       image.update(albums_id: nil)
     end

@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: %i[show edit update destroy unlink]
+  before_action :set_image, only: %i[show edit update destroy unlink unalbum]
 
   # GET /images or /images.json
   def index
