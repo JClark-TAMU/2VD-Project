@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[ show edit update destroy add link]
+  before_action :set_user, only: %i[ show edit update destroy add link]
 
   # GET /albums or /albums.json
   def index
@@ -8,7 +9,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/user or /albums/1/user.json
   def user
-    @user = User.find(id: params[:id])
+    @user = User.find(params[:id])
     @albums = Album.ownedby(@user)
   end
 
@@ -19,6 +20,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
+    @user = User.find(params[:id])
     @album = Album.new
   end
 
@@ -83,7 +85,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url, notice: "Album was successfully destroyed." }
+      format.html { redirect_to user_album_url(@user), notice: "Album was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -92,6 +94,10 @@ class AlbumsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_album
       @album = Album.find(params[:id])
+    end
+
+    def set_user
+      @user = Album.find(params[:id]).user_id
     end
 
     # Only allow a list of trusted parameters through.
