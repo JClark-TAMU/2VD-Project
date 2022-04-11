@@ -36,5 +36,5 @@ amazon:
   service: S3
   access_key_id:
   secret_access_key:
-  region: us-east-2
-  bucket: web2d-dev
+  region: us-east-1
+  bucket: web2d-prod-bucket

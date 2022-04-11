@@ -1,4 +1,4 @@
-<!-- galleries front page -->
+<!-- (Signed in) Home Page -->
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -34,33 +34,54 @@
                             <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
                         <% end %>
                         <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
-                    </ul>         
+                    </ul>
+                    
             </div>
         </nav>
 
-      <main class="page projects-page" style="padding-top: 3%;">
-        <section style="padding-top:3%">
-          <% if User.find_by(email: current_admin.email).isAdmin %> 
-            <button class="btn btn-dark float-end" onclick="location.href='<%= new_gallery_path %>'" type="button" id="New Gallery" name="New Gallery">New Gallery</button>
-          <% end %>
-        </section>
-        <section class="portfolio-block projects compact-grid" style="padding-top:4%">
-            <div class="heading">
-                <p id="notice"><%= notice %></p>
-                <h1 style="font-weight:bold;">Galleries</h1>
-                <h5 style="padding-bottom:2%;">Explore 2VD Prompts:</h5>
-                <% @galleries.each do |gallery| %>
-                    <%= link_to gallery.prompt, gallery, :style=>'color:#000000; text-decoration:underline; font-size:150%;'%>
-                    <br><br>
-                <% end %>
+        <main class="page projects-page" style="padding-top: 7%;">
+            <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
+                <h4 style="text-align: center; margin-top: 0%;">Documentation</h4>
+                <h4 style="text-align: center;"><strong>Portfolio</strong>:</h4>
+                <p style="text-align: center; margin-top: 0%;">
+                    User: A portfolio is created at the same time you make your account and will be linked to your account. 
+                    You can access your portfolio through the associated link on the nav bar. 
+                    Images that are saved to your account and with the “Display on profile?” checked will appear on your profile 
+                    in the order you upload them, otherwise they will appear on your portfolio only. 
+                    The title of the portfolio can be edited by clicking the “Edit Title” button. 
+                    A new image can be added to a portfolio by clicking the “Add Image” 
+                    button and following the directions to create a new image. 
+                </p>
+                <h4 style="text-align: center;"><strong>Gallery</strong>:</h4>
+                <p style="text-align: center; margin-top: 0%;">
+                    User: To submit an image to a gallery, select the gallery and click submit and choose an image associated with your profile. 
+                    An image must be added to your profile before it can be submitted to a gallery. 
+                    To remove an image from a gallery, click the image and click the “unlink from gallery” button.
+                </p>
+                <h4 style="text-align: center;"><strong>Images</strong>:</h4>
+                <p style="text-align: center; margin-top: 0%;">
+                    User: To view images from all users and galleries, select the Images tab from the navigation bar. 
+                    From here you can also upload an image and decide whether you want it displayed on your profile or your portfolio only.
+                </p>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <div class="social">
+                <p>Follow 2VD:</p>
+                <a href="https://discord.gg/YmxbzC79" title="Discord"><i class="fab fa-discord" style="font-size:30px"></i></a>
+                <a href="https://www.facebook.com/groups/926735031021170/" title="Facebook"><i class="fab fa-facebook-f" style="font-size:30px"></i></a>
+                <a href="https://www.instagram.com/tamu_2vd/" title="Instagram"><i class="fab fa-instagram" style="font-size:30px"></i></a>
+                <a href="https://twitter.com/2vdTamu" title="Twitter"><i class="fab fa-twitter" style="font-size:30px"></i></a>
+                <%= link_to "Documentation", documentation_dashboard_path %>
             </div>
-        </section>
-      </main>
+        </footer>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
         <script src="app/assets/javascript/channels/bootstrap.min.js"></script>
         <script src="app/assets/javascript/packs/application.js"></script> 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-     </body>
-  </html>
+
+    </body>
+</html>

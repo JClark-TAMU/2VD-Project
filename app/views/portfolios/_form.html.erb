@@ -1,3 +1,15 @@
+<!-- portfolio form -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+</head>
+
 <%= form_with(model: portfolio) do |form| %>
   <% if portfolio.errors.any? %>
     <div id="error_explanation">
@@ -11,12 +23,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;">Edit Portfolio</h1>
+  <form>
+    <div class="form-row align-items-center">
+      <div class="col-auto">
+        <label for="title">Title</label>
+        <input class="form-control" type = "text" id = "title" name = "portfolio[title]" value="<%= @portfolio.title %>">
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <br>
+      <div class="row-auto" style="padding-top:4%">
+        <input type="submit" class="btn btn-dark" id = "Submit" value="Save Changes" style="display: block; margin: 0 auto;">
+      </div>
+    </div>
+
+  </form>
 <% end %>
