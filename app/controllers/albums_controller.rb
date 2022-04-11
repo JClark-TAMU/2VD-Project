@@ -8,7 +8,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/user or /albums/1/user.json
   def user
-    @albums = Album.ownedby(params[:id])
+    @user = params[:id]
+    @albums = Album.ownedby(@user)
   end
 
   # GET /albums/1 or /albums/1.json
@@ -35,7 +36,7 @@ class AlbumsController < ApplicationController
     Image.find(params[:image]).update(albums_id: @album.id)
 
     respond_to do |format|
-      format.html { redirect_to album_url(@album), notice: params[:image] }
+      format.html { redirect_to user_album_url(@album.user_id), notice: params[:image] }
       format.json { head :no_content }
     end
   end
@@ -49,7 +50,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to album_url(@album), notice: "Album was successfully created." }
+        format.html { redirect_to user_album_url(@album.user_id), notice: "Album was successfully created." }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -62,7 +63,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to album_url(@album), notice: "Album was successfully updated." }
+        format.html { redirect_to user_album_url(@album.user_id), notice: "Album was successfully updated." }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit, status: :unprocessable_entity }
