@@ -33,6 +33,7 @@
                             <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
                             <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
                         <% end %>
+                        <li class="nav-item"><a class="nav-link" href="<%= documentation_path %>">Documentation</a></li>
                         <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
                     </ul>
                     
