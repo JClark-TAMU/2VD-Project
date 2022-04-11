@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
   def unalbum
     @image.update(albums_id: nil)
     respond_to do |format|
-      format.html { redirect_to(image_path(@image), notice: 'Image was successfully removed from gallery.') }
+      format.html { redirect_to(image_path(@image), notice: 'Image was successfully removed from album.') }
       format.json { head(:no_content) }
     end
   end
