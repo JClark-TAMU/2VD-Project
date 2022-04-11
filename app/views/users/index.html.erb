@@ -49,7 +49,10 @@
                 <div class="col-md-4" style="background: rgb(232, 242, 255)">
                     <div class="card special-skill-item border-0" style="background: rgb(232, 242, 255)">
                         <div class="card-header bg-transparent border-0" style="background: rgb(232, 242, 255)"></div>
-                        <div class="card-body" style="background: rgb(232, 242, 255)"><%= image_tag(user.avatar, class: 'avatar_img', style: 'width:200px;height: 200px') %>
+                        <div class="card-body" style="background: rgb(232, 242, 255)">
+                            <% unless user.avatar == nil %>
+                              <%= image_tag(user.avatar, class: 'avatar_img', style: 'width:200px;height: 200px') %>
+                            <% end %>
                             <h3 class="card-title"><%= link_to user.username, user, style: 'text-decoration:none;'%></h3>
                             <p class="card-text" style="font-style:italic; padding-top:0%"><%= user.role %></p>
                             <p class="card-text" style="padding-top:0%"><%= user.bio %></p>
