@@ -1,16 +1,17 @@
-unless User.exists?(email: 'jonathan.clark@tamu.edu')
-  User.create!([
+unless User.exists?(email: 'web2d.development@gmail.com')
+  webUser = User.create!([
     {
-      username: 'OASIS',
-      email: 'jonathan.clark@tamu.edu',
+      username: 'Web2d',
+      email: 'web2d.development@gmail.com',
       isAdmin: true,
-      role: 'Developer',
-      bio: 'I code',
+      role: 'Organization',
+      bio: 'Organizational account',
       portfolioID: 1,
-      full_name: 'Jonathan Clark',
-      avatar: 'https://lh3.googleusercontent.com/a-/AOh14GjKHilpdz9o-rWwR26k4y2VHT8w-Ih3JViRGv4pAw=s96-c'
+      full_name: 'Web2d',
+      avatar: 'https://lh3.googleusercontent.com/a/AATXAJxCWLfJltqmCrs-xBsko4MWBY54KSgVpefCEQlX=s96-c'
     }
   ]
               )
-  Portfolio.create!(title: 'OASIS', user_id: 1)
+  webPort = Portfolio.create!(title: 'Web2d', user_id: webUser.id)
+  webUser.update(portfolioID: webPort.id)
 end
