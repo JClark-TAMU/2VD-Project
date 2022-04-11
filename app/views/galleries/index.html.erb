@@ -40,9 +40,9 @@
 
       <main class="page projects-page" style="padding-top: 3%;">
         <section style="padding-top:3%">
-          <%# <% if User.find_by(email: current_admin.email).isAdmin %> 
-            <button class="btn btn-dark float-end" onclick="location.href='<%= new_gallery_path %>'" type="button" id="New Gallery" name="New Gallery">Create Gallery</button>
-          <%# <% end %>
+          <% if User.find_by(email: current_admin.email).isAdmin %> 
+            <button class="btn btn-dark float-end" onclick="location.href='<%= new_gallery_path %>'" type="button" id="New Gallery" name="New Gallery">New Gallery</button>
+          <% end %>
         </section>
         <section class="portfolio-block projects compact-grid" style="padding-top:4%">
             <div class="heading">
@@ -51,11 +51,7 @@
                 <h5 style="padding-bottom:2%;">Explore 2VD Prompts:</h5>
                 <% @galleries.each do |gallery| %>
                     <%= link_to gallery.prompt, gallery, :style=>'color:#000000; text-decoration:underline; font-size:150%;'%>
-                    <br>
-                    <% if User.find_by(email: current_admin.email).isAdmin %>
-                    <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-                    <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    <% end %>
+                    <br><br>
                 <% end %>
             </div>
         </section>

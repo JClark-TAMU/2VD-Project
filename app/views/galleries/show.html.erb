@@ -38,9 +38,10 @@
         </nav>
         <main class="page projets-page" style="padding-top:3%;">
           <section style="padding-top:3%">
-          <%# <% if User.find_by(email: current_admin.email).isAdmin %> 
-            <button class="btn btn-dark float-end" onclick="location.href='<%= edit_gallery_path(@gallery) %>'" type="button" id="Edit" name="Edit">Edit Gallery</button>
-          <%# <% end %>
+          <% if User.find_by(email: current_admin.email).isAdmin %> 
+            <button class="btn btn-dark float-end" type="button" style="color: white;"><%= link_to 'Destroy', @gallery, method: :delete, data: { confirm: 'Are you sure?' }, :style=>'color:#FFFFFF; text-decoration:none;'%></button>
+            <button class="btn btn-dark float-end" style="margin-right:3vw;" onclick="location.href='<%= edit_gallery_path(@gallery) %>'" type="button" id="Edit" name="Edit">Edit Gallery</button>
+          <% end %>
           </section>
           <section class="portfolio-block projects compact-grid" style="padding-top:4%">
             <div class="heading">

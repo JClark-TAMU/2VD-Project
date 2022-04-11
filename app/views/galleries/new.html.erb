@@ -41,8 +41,10 @@
     <main class = "page projects-page">
         <section class="portfolio-block block" style="padding-top: 0px;">
         <p id="notice"><%= notice %></p>
-            <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;">New Gallery</h1>
-            <%= render 'form', gallery: @gallery %>
+            <% if User.find_by(email: current_admin.email).isAdmin %>
+                <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;">New Gallery</h1>
+                <%= render 'form', gallery: @gallery %>
+            <% end %>
         </section>
     </main> 
 
