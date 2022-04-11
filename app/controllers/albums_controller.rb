@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[ show edit update destroy add link]
+  before_action :set_user, only: %i[ show edit update destroy add link]
 
   # GET /albums or /albums.json
   def index
@@ -8,7 +9,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/user or /albums/1/user.json
   def user
-    @albums = Album.ownedby(params[:id])
+    @user = User.find(params[:id])
+    @albums = Album.ownedby(@user)
   end
 
   # GET /albums/1 or /albums/1.json
@@ -18,6 +20,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
+    @user = User.find(params[:id])
     @album = Album.new
   end
 
@@ -35,7 +38,7 @@ class AlbumsController < ApplicationController
     Image.find(params[:image]).update(albums_id: @album.id)
 
     respond_to do |format|
-      format.html { redirect_to album_url(@album), notice: params[:image] }
+      format.html { redirect_to user_album_url(@album.user_id), notice: "Image was successfully linked." }
       format.json { head :no_content }
     end
   end
@@ -49,7 +52,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to album_url(@album), notice: "Album was successfully created." }
+        format.html { redirect_to user_album_url(@album.user_id), notice: "Album was successfully created." }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -62,7 +65,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to album_url(@album), notice: "Album was successfully updated." }
+        format.html { redirect_to user_album_url(@album.user_id), notice: "Album was successfully updated." }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -74,7 +77,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1 or /albums/1.json
   def destroy
     # remove all links from image to album
-    @images = Image.ingallery(@album)
+    @images = Image.inalbum(@album)
     @images.each do |image|
       image.update(albums_id: nil)
     end
@@ -82,7 +85,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url, notice: "Album was successfully destroyed." }
+      format.html { redirect_to user_album_url(@user), notice: "Album was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -91,6 +94,10 @@ class AlbumsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_album
       @album = Album.find(params[:id])
+    end
+
+    def set_user
+      @user = Album.find(params[:id]).user_id
     end
 
     # Only allow a list of trusted parameters through.
