@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/user or /albums/1/user.json
   def user
-    @user = params[:id]
+    @user = User.find(id: params[:id])
     @albums = Album.ownedby(@user)
   end
 
