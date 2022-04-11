@@ -30,13 +30,8 @@
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
                         <% if User.find_by(email: current_admin.email).portfolio %>
-                            <li class="nav-item dropdown">
-                                <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown" href="#">Account</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
-                                    <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
-                                </div>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
                         <% end %>
                         <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
                     </ul>
@@ -49,7 +44,7 @@
                 <h4 style="text-align: center; margin-top: 0%;">You're logged in!</h4>
                 <% if not User.find_by(email: current_admin.email).portfolio %>
                     <p style="text-align: center; margin-top: 0%;">If you're interested in becoming a member, please create an account <%= link_to 'here', edit_user_path(User.find_by(email: current_admin.email)), {:style=>'color:#000000; text-decoration:underline;'} %> 
-                    to create a portfolio and upload your art!</p>
+                    to start a portfolio and upload your art!</p>
                 <% end %>
                 <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">

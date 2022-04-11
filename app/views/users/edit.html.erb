@@ -30,13 +30,8 @@
                     <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                     <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
                     <% if User.find_by(email: current_admin.email).portfolio %>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown" href="#">Account</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
-                                <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email)) %>">Portfolio</a>
-                            </div>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
                     <% end %>
                 </ul>
                 <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>

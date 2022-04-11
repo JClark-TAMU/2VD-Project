@@ -21,35 +21,34 @@
       </ul>
     </div>
   <% end %>
-
+  
   <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;">New Image</h1>
-
-  <form>
+  <form >
     <div class="form-row align-items-center">
-      <div class="col-auto">
+      <div class="field">
         <%= form.label :title %>
         <%= form.text_field :title %>
       </div>
 
-      <div class="col-auto">
+      <div class="field">
         <%= form.label :caption %>
         <%= form.text_field :caption %>
       </div>
 
-      <div class="col-auto">
+      <div class="field">
         <%= form.label :imageLink %>
         <%= form.file_field :imageLink %>
       </div>
 
-      <div class="col-auto">
+      <div class="field">
         <%= form.label :showOnPortfolio %>
         <%= form.check_box :showOnPortfolio %>
       </div>
 
-      <br>
-      <div class="row-auto" style="padding-top:4%">
-        <input type="submit" class="btn btn-dark" id = "Submit" value="Submit" style="display: block; margin: 0 auto;">
+      <div class="actions">
+        <%= form.submit %>
       </div>
+        </div>
   </form>
 
 <% end %>

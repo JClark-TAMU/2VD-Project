@@ -31,13 +31,8 @@
                         <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
                         <% if User.find_by(email: current_admin.email).portfolio %>
-                            <li class="nav-item dropdown">
-                                <a class="dropdown-toggle nav-link" aria-expanded="true" data-toggle="dropdown" href="#">Account</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="<%= user_path(User.find_by(email: current_admin.email)) %>">Profile </a>
-                                    <a class="dropdown-item" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">Portfolio</a>
-                                </div>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
                         <% end %>
                         <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
                     </ul>     
@@ -45,9 +40,9 @@
         </nav>
       <main class="page projets-page" style="padding-top:3%;">
       <section style="padding-top:3%">
-        <% if User.find(params[:id]).email == current_admin.email %>
+        <% if User.find_by(email: current_admin.email) == @portfolio.user %>
           <button class="btn btn-dark float-end" onclick="location.href='<%= edit_portfolio_path(@portfolio) %>'" type="button" id="Edit title" name="Edit title">Edit Title</button>
-          <button class="btn btn-dark float-end" onclick="location.href='<%= new_image_path %>'" type="button" id="New Image" name="New Image">Add Image</button>
+          <button class="btn btn-dark float-end" style="margin-right:3vw;" onclick="location.href='<%= new_image_path %>'" type="button" id="New Image" name="New Image">Add Image</button>
          <% end %>
       </section>
         <section class="portfolio-block projects compact-grid" style="padding-top:4%">
