@@ -69,7 +69,7 @@ OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
   'info' => {
     'full_name' => 'mockuser',
     'email' => 'britwiz@tamu.edu',
-    'avatar_url' => 'https://lh3.googleusercontent.com/a/AATXAJwm1tjyLpwpV9m5Szg2711oaS-VST5qaUo3z_8t=s96-c'
+    'avatar_url' => '2VD-logo.png'
   },
   'credentials' => {
     'token' => 'mock_token',
@@ -77,3 +77,5 @@ OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
   }
 }
                                                                   )
+Capybara.disable_animation = true 
+Capybara.default_max_wait_time = 10
