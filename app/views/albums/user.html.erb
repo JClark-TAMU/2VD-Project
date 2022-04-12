@@ -1,35 +1,67 @@
-<p id="notice"><%= notice %></p>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>Home - 2VD</title>
+        <link rel="stylesheet" href="app/assets/stylesheets/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&display=swap">
+        <link rel="stylesheet" href="app/assets/fonts/ionicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        
+    </head>
 
-<h1>Albums</h1>
+    <body style="background: rgb(232, 242, 255)">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
+            <div class="container">
+                <a class="navbar-brand logo" href="#"></a>
+                <%= image_tag ("2VD-logo.png"), :size => "40" %>
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="visually-hidden">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right;">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Officers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
+                        <% if User.find_by(email: current_admin.email).portfolio %>
+                            <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
+                            <li class="nav-item"><a class="nav-link" href="<%= user_album_path(User.find_by(email: current_admin.email)) %>">My Albums</a></li>
+                        <% end %>
+                        <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
+                    </ul>         
+            </div>
+        </nav>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Size</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <main class="page projects-page" style="padding-top: 3%;">
+        <section style="padding-top:3%">
+          <% if User.find_by(email: current_admin.email).isAdmin || User.find_by(email: current_admin.email) == @user %>
+            <button class="btn btn-dark float-end" onclick="location.href='<%= new_album_path %>'" type="button" id="New Album" name="New Album">New Album</button>
+          <% end %>
+        </section>
+        <section class="portfolio-block projects compact-grid" style="padding-top:4%">
+            <div class="heading">
+                <p id="notice"><%= notice %></p>
+                <h1 style="font-weight:bold;">Albums</h1>
+                <% @albums.each do |album| %>
+                  <%= link_to album.name, album, :style=>'color:#000000; text-decoration:underline; font-size:150%;'%>
+                  <br>
+                   <%= album.caption %>
+                    <br><br>
+                <% end %>
+            </div>
+        </section>
+      </main>
 
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.name %></td>
-        <td><%= album.caption %></td>
-        <td><%= link_to 'Show', album %></td>
-        <% if User.find_by(email: current_admin.email).isAdmin || User.find_by(email: current_admin.email) == @user %>
-          <td><%= link_to 'Edit', edit_album_path(album) %></td>
-          <td><%= link_to 'Add Image', add_album_path(album) %></td>
-          <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if User.find_by(email: current_admin.email).isAdmin || User.find_by(email: current_admin.email) == @user %>
-  <%= link_to 'New Album', new_album_path(id: @user.id) %> |
-<% end %>
-<%= link_to "Back to Dashboard", root_path %>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+        <script src="app/assets/javascript/channels/bootstrap.min.js"></script>
+        <script src="app/assets/javascript/packs/application.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     </body>
+  </html>
