@@ -1,4 +1,4 @@
-<%= form_with(model: album) do |form| %>
+ <%= form_with(model: album) do |form| %>
   <% if album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -11,17 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+  </head>
+  <form>
+    <div class="form-row align-items-center">
+      <div class="col-auto">
+        <label for="name">Name</label>
+        <input class="form-control" type = "text" id = "name" name = "album[name]" value="<%= @album.name %>">
+      </div>
 
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_field :caption %>
-  </div>
+      <div class="col-auto">
+        <label for="caption">Caption</label>
+        <input class="form-control" type = "text" id = "caption" name = "album[caption]" value="<%= @album.caption %>">
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <br>
+      <div class="row-auto" style="padding-top:4%">
+        <input type="submit" class="btn btn-dark" id = "Update Album" value="Save Changes" style="display: block; margin: 0 auto;">
+      </div>
+    </div>
+
+  </form>
 <% end %>

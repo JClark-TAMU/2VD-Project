@@ -32,6 +32,7 @@
                     <% if User.find_by(email: current_admin.email).portfolio %>
                         <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= user_album_path(User.find_by(email: current_admin.email)) %>">My Albums</a></li>
                     <% end %>
                 </ul>
                 <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
@@ -67,7 +68,8 @@
                                                 <button class="btn btn-dark" onclick="location.href='<%= edit_user_path(@user)%>'" type="button" id = "Edit Profile">Edit Profile</button>
                                             <% end %>
                                             <% unless User.find(params[:id]).email == current_admin.email %>
-                                                <button class="btn btn-dark" type="button"><%= link_to @user.portfolio.title, @user.portfolio, :style=>'color:#FFFFFF; text-decoration:none;' %></button>
+                                                <button class="btn btn-dark" type="button"><%= link_to 'Portfolio', @user.portfolio, :style=>'color:#FFFFFF; text-decoration:none;' %></button>
+                                                <button class="btn btn-dark" type="button"><%= link_to 'Albums', user_album_path(@user), :style=>'color:#FFFFFF; text-decoration:none;' %></button>
                                             <% end %>
                                             </div>
                                         </div>

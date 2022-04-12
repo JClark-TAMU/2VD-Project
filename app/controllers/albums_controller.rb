@@ -20,7 +20,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @user = User.find(params[:id])
+    @user = User.find_by(email: current_admin.email)
     @album = Album.new
   end
 

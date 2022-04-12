@@ -29,6 +29,7 @@
                     <% if User.find_by(email: current_admin.email).portfolio %>
                         <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= user_album_path(User.find_by(email: current_admin.email)) %>">My Albums</a></li>
                     <% end %>
                 </ul>
                 <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
