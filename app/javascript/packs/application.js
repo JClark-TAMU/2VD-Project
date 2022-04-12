@@ -7,7 +7,15 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "channels/bootstrap.min.js"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// added from theme.js in bootstrap studio
+document.querySelectorAll('.datepicker').forEach(function(field) {
+	var picker = new Pikaday({
+		field: field
+	});
+});

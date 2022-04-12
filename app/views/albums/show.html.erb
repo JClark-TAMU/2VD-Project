@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @album.name %>
+</p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @album.caption %>
+</p>
+
+<% @images.each do |image| %>
+  <div class="flex-child image">
+    <%= link_to image_path(image) do %>
+      <%= image_tag(image.imageLink.service_url, class: 'portfolio image', style: 'width:300px') %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', user_album_path(@user) %>

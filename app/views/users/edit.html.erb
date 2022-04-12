@@ -1,6 +1,57 @@
-<h1>Editing User</h1>
+<!-- Edit user profile page -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Edit Profile - 2VD</title>
+    <link rel="stylesheet" href="app/assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&display=swap">
+    <link rel="stylesheet" href="app/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        
+</head>
 
-<%= render 'form', user: @user %>
+<body style="background: rgb(232, 242, 255)">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
+         <div class="container">
+            <a class="navbar-brand logo" href="#"></a>
+            <%= image_tag ("2VD-logo.png"), :size => "40" %>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+           <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right;">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Officers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
+                    <% if User.find_by(email: current_admin.email).portfolio %>
+                        <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
+                    <% end %>
+                </ul>
+                <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button">Sign Out</button>
+            </div>
+        </div>
+    </nav>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <main class = "page projects-page">
+        <section class="portfolio-block block" style="padding-top: 0px;">
+        <p id="notice"><%= notice %></p>
+            <%= render 'form', user: @user %>
+        </section>
+    </main> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="app/assets/javascript/channels/bootstrap.min.js"></script>
+    <script src="app/assets/javascript/packs/application.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
