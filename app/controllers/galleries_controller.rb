@@ -65,6 +65,12 @@ class GalleriesController < ApplicationController
 
   # DELETE /galleries/1 or /galleries/1.json
   def destroy
+    # remove all links from image to gallery
+    @images = Image.ingallery(@gallery)
+    @images.each do |image|
+      image.update(galleries_id: nil)
+    end
+    # destory gallery
     @gallery.destroy
 
     respond_to do |format|

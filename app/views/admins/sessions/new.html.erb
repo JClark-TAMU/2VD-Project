@@ -13,9 +13,23 @@
 
 <body style="background: rgb(232, 242, 255)">
 
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
+        <div class="container">
+        <a class="navbar-brand logo" href="#"></a>
+            <%= image_tag ("2VD-logo.png"), :size => "40" %>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right;">
+                <ul class="navbar-nav ms-auto">
+                    <button class="btn btn-dark" type="button" style="color: white;" id="Sign In"><%= link_to "Sign in", admin_google_oauth2_omniauth_authorize_path, method: :post , :style=>'color:#FFFFFF; text-decoration:none;'%></button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <main class="page projects-page" style="padding-top: 6%;">
         <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
             <h4 style="text-align: center; margin-top: 0%;">You're Logged out!</h4>
+            <p style="text-align: center; margin-top: 0%;">Sign in to view more of the 2VD website.</p>
             <h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;"><strong>2VD</strong> Visual Developers</h1>
                 <div class="row" style="padding-top: 2%">
                     <div class="col-md-6">
@@ -71,13 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="row">
-                            <div class="col" style="padding-top:2%">
-                                <button class="btn btn-dark btn-lg" type="button" style="display: block; margin: 0 auto;">Submit</button>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="container">
                     <div class="row">
