@@ -14,32 +14,10 @@
     </head>
 
     <body style="background: rgb(232, 242, 255)">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white portfolio-navbar gradient" style="background: linear-gradient(to right, #a63cac, #3c92ac);">
-            <div class="container">
-                <a class="navbar-brand logo" href="#"></a>
-                <%= image_tag ("2VD-logo.png"), :size => "40" %>
-                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="visually-hidden">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav" style="text-align: right;">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="<%=root_path%>">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="<%= officer_path%>">Officers</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%= users_path %>">Members</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%= images_path %>">Images</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%= galleries_path %>">Galleries</a></li>
-                        <% if User.find_by(email: current_admin.email).portfolio %>
-                            <li class="nav-item"><a class="nav-link" href="<%= portfolio_path(User.find_by(email: current_admin.email).portfolio) %>">My Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link" href="<%= user_path(User.find_by(email: current_admin.email)) %>">My Profile </a></li>
-                        <% end %>
-                        <button class="btn btn-dark" onclick="location.href='<%= destroy_admin_session_path %>'" type="button" id="Sign Out" name="Sign Out">Sign Out</button>
-                    </ul>         
-            </div>
-        </nav>
+        
 
-      <main class="page projects-page" style="padding-top: 3%;">
-        <section style="padding-top:3%">
+      <main class="page projects-page" style="padding-top: 7%;">
+        <section>
           <% if User.find_by(email: current_admin.email).isAdmin %> 
             <button class="btn btn-dark float-end" onclick="location.href='<%= new_gallery_path %>'" type="button" id="New Gallery" name="New Gallery">New Gallery</button>
           <% end %>

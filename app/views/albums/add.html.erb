@@ -1,13 +1,21 @@
-<h1>Which image do you want to submit?</h1>
+<main class = "page projects-page">
+        <section class="portfolio-block block" style="padding-top: 7%;">
+			<h1 style="text-align: center">Which image do you want to submit?</h1>
+			<form>
+				<%= form_with(url: link_album_path(@album), method: "patch") do |f| %>
+				<% options = options_from_collection_for_select(@user_images, 'id', 'title') %>
+				<%= f.select :image,  options %>
 
-<%= form_with(url: link_album_path(@album), method: "patch") do |f| %>
-    <% options = options_from_collection_for_select(@user_images, 'id', 'title') %>
-    <%= f.select :image,  options %>
+				<div class="actions">
+					<%= f.submit %>
+				</div>
+			</form>
+			<% end %>
+			
+			
+        </section>
+    </main>
 
-    <div class="actions">
-        <%= f.submit %>
-    </div>
-<% end %>
 
 <%= link_to 'Show', @album %> |
 <%= link_to 'Back', user_album_path(@user) %>

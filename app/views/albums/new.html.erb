@@ -1,5 +1,9 @@
-<h1>New Album</h1>
+<main class = "page projects-page">
+        <section class="portfolio-block block" style="padding-top: 7%;">
+			<h1 style="text-align: center;margin-top: 0%;margin-bottom: 3%;padding-top: 7%;">New Album</h1>
+            <%= render 'form', album: @album %>
+        </section>
+    </main>
 
-<%= render 'form', album: @album %>
 
 <%= link_to 'Back', user_album_path(@user) %>

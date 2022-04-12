@@ -10,18 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <form>
+	<div class="form-row align-items-center">
+	  <div class="field">
+		<%= form.label :name %>
+		<%= form.text_field :name %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+	  <div class="field">
+		<%= form.label :caption %>
+		<%= form.text_field :caption %>
+	  </div>
 
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_field :caption %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+	  <div class="actions">
+		<%= form.submit %>
+	  </div>
+	</div>
+  </form>
 <% end %>

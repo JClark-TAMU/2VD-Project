@@ -12,6 +12,5 @@ unless User.exists?(email: 'web2d.development@gmail.com')
     }
   ]
               )
-  webPort = Portfolio.create!(title: 'Web2d', user_id: webUser.id)
-  webUser.update(portfolioID: webPort.id)
+  webPort = Portfolio.create!(title: 'Web2d', user_id: 1)
 end
