@@ -20,11 +20,9 @@ Rails.application.routes.draw do
   end
   resources :portfolios
   get '/users/officers', to: 'users#officers', as: 'officer'
+  get '/dashboards/documentation', to: 'dashboards#documentation', as: 'documentation'
   resources :users
   root to: 'dashboards#show'
-  resources :dashboards do
-    get 'documentation'
-  end
   devise_for :admins, controllers: { omniauth_callbacks: 'admins/omniauth_callbacks' }
   devise_scope :admin do
     get 'admins/sign_in', to: 'admins/sessions#new', as: :new_admin_session
