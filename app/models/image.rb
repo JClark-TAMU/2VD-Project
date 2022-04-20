@@ -3,8 +3,7 @@ class Image < ApplicationRecord
     belongs_to :Portfolio, optional: true, foreign_key: "portfolios_id", class_name: "Portfolio"
     belongs_to :Gallery, optional: true, foreign_key: "galleries_id", class_name: "Gallery"
 
-  validates :title, presence: true
-  validates :caption, presence: true
+  
   validates :showOnPortfolio, inclusion: [true, false]
   validates :imageLink, presence: true
   validates :users_id, presence: true

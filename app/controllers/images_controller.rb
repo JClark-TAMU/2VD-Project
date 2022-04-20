@@ -37,6 +37,7 @@ class ImagesController < ApplicationController
   def create
     @user = User.find_by(email: current_admin.email)
     @image = Image.new(image_params)
+    @image.title = 'Untitled' if @image.title == ''
     @image.users_id = @user.id
     @image.portfolios_id = Portfolio.find_by(user_id: @image.users_id).id
 
