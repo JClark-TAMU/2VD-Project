@@ -3,12 +3,12 @@ class GalleriesController < ApplicationController
 
   # GET /galleries or /galleries.json
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.all.order("created_at DESC")
   end
 
   # GET /galleries/1 or /galleries/1.json
   def show
-    @images = Image.ingallery(@gallery.id).order("created_at DESC")
+    @images = Image.ingallery(@gallery.id)
   end
 
   # GET /galleries/new

@@ -97,4 +97,12 @@ class UsersController < ApplicationController
     end
     return member_roles
   end
+
+  def member_roles
+    return ['Member','Alumni','Guest']
+  end
+
+  def admin_roles
+    return ['Member','Alumni','Guest','Officer','Secretary','Social Media Officer','Treasurer','Vice President','President']
+  end
 end

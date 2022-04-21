@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_one :portfolio
   has_many :images, through: :portfolio
 
-  member_roles = ['Member','Alumni','Guest']
-  admin_roles = ['Member','Alumni','Guest','Officer','Secretary','Social Media Officer','Treasurer','Vice President','President']
   #permission function
   # If admin or owner, return true
   def is_permitted?
