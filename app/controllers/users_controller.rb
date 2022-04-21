@@ -55,6 +55,10 @@ class UsersController < ApplicationController
     @images.each do |image|
       image.destroy
     end
+    @albums = Albums.ownedby(@user.id)
+    @albums.each do |album|
+      album.destroy
+    end
     @email = @user.email
     @user.destroy
 
