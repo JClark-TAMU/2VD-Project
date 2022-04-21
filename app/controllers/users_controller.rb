@@ -54,6 +54,7 @@ class UsersController < ApplicationController
     @images = Image.ownedby(@user.id)
     @images do |image|
       image.destroy
+    end
     @portfolio = Portfolio.find(@user.portfolioID)
     @user.portfolioID = nil
     @portfolio.destroy
