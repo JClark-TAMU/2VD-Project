@@ -20,10 +20,13 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @roles = get_roles
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    @roles = get_roles
+  end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
@@ -48,6 +51,14 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    @images = Image.ownedby(@user.id)
+    @images.each do |image|
+      image.destroy
+    end
+    @albums = Album.ownedby(@user.id)
+    @albums.each do |album|
+      album.destroy
+    end
     @email = @user.email
     @user.destroy
 
@@ -79,5 +90,20 @@ class UsersController < ApplicationController
 
   def user_profile_images
     Image.ownedby(@user.id).publicimages
+  end
+
+  def get_roles
+    if User.find_by(email: current_admin.email).isAdmin
+      return admin_roles
+    end
+    return member_roles
+  end
+
+  def member_roles
+    return ['Member','Alumni','Guest']
+  end
+
+  def admin_roles
+    return ['Member','Alumni','Guest','Officer','Secretary','Social Media Officer','Treasurer','Vice President','President']
   end
 end
