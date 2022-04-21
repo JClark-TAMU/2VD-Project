@@ -8,7 +8,7 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1 or /galleries/1.json
   def show
-    @images = Image.ingallery(@gallery.id)
+    @images = Image.ingallery(@gallery.id).order("created_at DESC")
   end
 
   # GET /galleries/new

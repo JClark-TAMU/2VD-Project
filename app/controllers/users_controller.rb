@@ -48,6 +48,12 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    @images = Image.ownedby(@user.id)
+    @images do |image|
+      image.destroy
+    @portfolio = Portfolio.find(@user.portfolioID)
+    @user.portfolioID = nil
+    @portfolio.destroy
     @email = @user.email
     @user.destroy
 
