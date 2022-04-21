@@ -93,7 +93,7 @@ class UsersController < ApplicationController
   end
 
   def get_roles
-    if User.find(current_admin.id).isAdmin
+    if User.find_by(email: current_admin.email).isAdmin
       return admin_roles
     end
     return member_roles
