@@ -58,7 +58,7 @@
       <br>
       <div class="col-auto">
         <label for="user_role">Role</label>
-        <input class="form-control" type = "text" id = "user_role" name = "user[role]" value = "<%= @user.role %>">
+        <%= form.select :role, @role %>
       </div>
 
       <br>
