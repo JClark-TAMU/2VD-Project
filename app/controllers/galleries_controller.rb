@@ -30,7 +30,7 @@ class GalleriesController < ApplicationController
     Image.find(params[:image]).update(galleries_id: @gallery.id)
 
     respond_to do |format|
-      format.html { redirect_to galleries_url, notice: params[:image] }
+      format.html { redirect_to galleries_url, notice: "Image was successfully added." }
       format.json { head :no_content }
     end
   end

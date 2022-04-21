@@ -20,10 +20,13 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @roles = get_roles
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    @roles = get_roles
+  end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
@@ -85,5 +88,12 @@ class UsersController < ApplicationController
 
   def user_profile_images
     Image.ownedby(@user.id).publicimages
+  end
+
+  def get_roles
+    if User.find(current_admin.id).isAdmin
+      return admin_roles
+    end
+    return member_roles
   end
 end
