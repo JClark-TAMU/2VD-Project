@@ -55,9 +55,6 @@ class UsersController < ApplicationController
     @images.each do |image|
       image.destroy
     end
-    @portfolio = Portfolio.find(@user.portfolioID)
-    @user.portfolioID = nil
-    @portfolio.destroy
     @email = @user.email
     @user.destroy
 
