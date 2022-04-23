@@ -2,7 +2,19 @@
 
 ## Introduction
 
-This web-application was designed for the 2VD student organization at Texas A&M University. Members of this organization can upload their own artwork and have it hosted in a professional looking webpage to include in their resumes or other social media. This page also allows org members to upload their submission for weekly prompts and have their work displayed along with everyone elses.
+Web2D is a organizational community event page and portfolio website for the TAMU organization 2VD. Members and alumni are able to create accounts, submit images of their artwork, and then put their artwork in community galleries and personal albums. Moreover, they are able to look at other members artwork. Officers are shown off on their own page. Information on how to use the application can be found on the website.
+
+## Useful Rails Commands
+
+`rails scaffold`
+
+`Keep on adding to this`
+
+`rails g controller <route> <name>`
+
+## Executing the Code
+
+- Clone the repo on your local machine:
 
 ## Requirements
 
@@ -72,22 +84,25 @@ The application can be seen using a browser and navigating to http://localhost:3
 
 \*\* Add instructions/description if your application requires it.
 
-## Amazon Web Services S3 Configuration
+After Navigating to localhost:3000 on your browser you should see the Web2D homepage.
 
-- This application has its own user group, keys and S3 bucket. All of these things can be managed from the AWS managment console in your browser
+## Deploying the Code
 
-## Deployment
+To deploy the code on Heroku, connect the heroku webapp to the github. Then, hit manual deployment on the Deploy page. The Main branch should be used, as it is the most stable recent build of the application.
 
-\*\* Add instructions about how to deploy to Heroku
+To fully use the website, it will have to be connected to a OAuth and S3bucket. The respective keys for each service, and any other needed environmental variables, will need to be put within the config variables page in the heroku settings page.
 
-## CI/CD
+## CI/CD Process
 
-TBD
+Currently, the CI process for this app is running these three tests:
 
-## Support
-
-Admins looking for support should first look at the application help page.
-Users looking for help seek out assistance from the customer.
+  `rspec` for unit and integration testing
+  
+  `brakeman` for integrity scans
+  
+  `rubocop` for a linter
+  
+In terms of the CD process, the two current apps, staging and production, are connected to the branches dev and main respectively. Staging automatically deploys the newest dev commit, no matter on if the CI passed. Production will only automatically deploy the main branch if it is passing the CI.
 
 Staging: https://web2d-staging.herokuapp.com/
 Production: https://web2d.herokuapp.com/
