@@ -41,27 +41,92 @@
 
         <main class="page projects-page" style="padding-top: 7%;">
             <section class="portfolio-block projects-cards" style="padding-top: 5px;padding-bottom: 50px;">
-                <h4 style="text-align: center; margin-top: 0%;">Documentation</h4>
-                <h4 style="text-align: center;"><strong>Portfolio</strong>:</h4>
-                <p style="text-align: center; margin-top: 0%;">
-                    User: A portfolio is created at the same time you make your account and will be linked to your account. 
-                    You can access your portfolio through the associated link on the nav bar. 
+
+                <h4 style="text-align: center; margin-top: 0%; padding-bottom: 2vh; font-size:1.8em;"><strong>Documentation</strong></h4>
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;"><strong>User Help</strong></h4>
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Portfolio</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    A portfolio is created at the same time you make your account and will be linked to your account. 
+                    You can access your portfolio through the associated link on the nav bar.
+                    <br> 
+                    <br>
                     Images that are saved to your account and with the “Display on profile?” checked will appear on your profile 
                     in the order you upload them, otherwise they will appear on your portfolio only. 
                     The title of the portfolio can be edited by clicking the “Edit Title” button. 
                     A new image can be added to a portfolio by clicking the “Add Image” 
                     button and following the directions to create a new image. 
                 </p>
-                <h4 style="text-align: center;"><strong>Gallery</strong>:</h4>
-                <p style="text-align: center; margin-top: 0%;">
-                    User: To submit an image to a gallery, select the gallery and click submit and choose an image associated with your profile. 
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Gallery:</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    To submit an image to a gallery, select the gallery and click submit and choose an image associated with your profile. 
                     An image must be added to your profile before it can be submitted to a gallery. 
+                    <br>
+                    <br>
                     To remove an image from a gallery, click the image and click the “unlink from gallery” button.
                 </p>
-                <h4 style="text-align: center;"><strong>Images</strong>:</h4>
-                <p style="text-align: center; margin-top: 0%;">
-                    User: To view images from all users and galleries, select the Images tab from the navigation bar. 
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Images:</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    To view images from all users and galleries, select the Images tab from the navigation bar. 
                     From here you can also upload an image and decide whether you want it displayed on your profile or your portfolio only.
+                </p>
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Albums:</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    Albums are the ideal place to upload images that share a theme but may or may not have a place on your porfolio.
+                </p>
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;"><strong>Admin Help</strong></h4>
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Moderation</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    Admins are responsible for moderating the content uploaded to the website according to 2VD standards. 
+                    Admins have elevated privledges that allows them to do this.
+                    <br>
+                    <br>
+                    If a post is found to be unacceptable then admins can navigate to any users profile, porfolio, album, or propmt submission and delete the post.
+                    for artwork that is uploaded to a portfolio and is also showing on that particular users profile, then admins can edit the post to not show that image on the users profile
+                    to give the user a chance to download the image before the image is deleted.
+                    <br>
+                    <br>
+                    NOTE: this is not the case for album posts or propmt submissions, if you feel that your post might be deleted by an admin but wish to save the artwork, 
+                    please keep a copy of the artwork on your local machine.  
+                </p>
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Admin Making</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    Only admins or maintainers of the application can make typical organization members admins. The purpose of this is to 
+                    ease the transition of new officers as current officers graduate or leave the organization. 
+                </p>
+
+                <h4 style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">Technical Support</h4>
+                <p style="text-align: left; margin-top: 0%; width: 75vw; padding-left: 25%;">
+                    <strong>Heroku</strong>
+                    <br>
+                    <br>
+                    Heroku is a service used to host the application. If anything goes wrong ex.page not loading, 404 response, etc, Admins are expected to go through the organization 
+                    Heroku account to check logs to begin trouble shooting the issue.
+                    <br>
+                    <br>
+                    At some points the applications may seem to take longer to load then at other times, this is due to the fact that 
+                    Heroku servers are emphemiral, meaning after prolonged periods of not being used, the server will shut down and will need to be restarted, meaning longer load times. This is automatic.
+                    <br>
+                    For more information please visit this link: <a href="https://devcenter.heroku.com/categories/reference" title="Heroku Docs"><strong>Heroku Docs</strong></a>
+                    <br>
+                    <br>
+                    <strong>Amazon Web Services</strong>
+                    <br>
+                    <br>
+                    This application leverages Amazon Web Services (AWS) as a method to store the images uploaded at little to no cost.
+                    If a problem arises due to image uploads, Amins are expected to log into the organization AWS account to begin trouble shooting.
+                    <br>
+                    The specific service the apllication uses is AWS S3, a storage service. 
+                    <br>
+                    <br>
+                    For more information on S3 please visit this link: <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html" title="S3 docs"><strong>S3 Docs</strong></a>
+                    <br>
+                    For more information on AWS as a whole, please visit this link: <a href="https://aws.amazon.com/what-is-aws/" title="AWS docs"><strong>AWS Docs</strong></a>
                 </p>
             </section>
         </main>

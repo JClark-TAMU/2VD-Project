@@ -1,6 +1,6 @@
 # README
 
-## Getting Started
+## Introduction
 
 Web2D is a organizational community event page and portfolio website for the TAMU organization 2VD. Members and alumni are able to create accounts, submit images of their artwork, and then put their artwork in community galleries and personal albums. Moreover, they are able to look at other members artwork. Officers are shown off on their own page. Information on how to use the application can be found on the website.
 
@@ -16,38 +16,73 @@ Web2D is a organizational community event page and portfolio website for the TAM
 
 - Clone the repo on your local machine:
 
-`git clone https://github.com/joniguerrero/2VD-Project.git`
+## Requirements
+
+This code has been run and tested on:
+
+- Ruby - 3.0.2
+- Rails - 6.1.4.1
+- Ruby Gems - Listed in `Gemfile`
+- PostgreSQL - 13.3
+- Nodejs - v16.9.1
+- Yarn - 1.22.11
+
+## External Deps
+
+- Docker - Download latest version at https://www.docker.com/products/docker-desktop
+- Heroku CLI - Download latest version at https://devcenter.heroku.com/articles/heroku-cli
+- Git - Downloat latest version at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- Amazon Web Services - make an account at https://aws.amazon.com
+
+## Installation
+
+Download this code repository by using git:
+
+`git clone https://github.com/JClark-TAMU/2VD-Project.git`
+
+## Tests
+
+An RSpec test suite is available and can be ran using:
+
+`rspec spec/`
+
+## Execute Code
+
+Run the following code in Powershell if using windows or the terminal using Linux/Mac
 
 - Make sure docker is running in the background and pull the latest version of the container we worked with in lab:
 
-`docker pull dmartinez05/ruby_rails_postgresql:latest`
+  `docker pull dmartinez05/ruby_rails_postgresql:latest`
 
-- Navigate to the directory you just cloned and run the command for Windows/Mac:
+then,
 
-  - for Windows:
+- `cd 2VD-Project`
 
-    `docker run --rm -it --volume "${PWD}:/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000`
+- for Windows:
 
-  - for Mac:
+  `docker run --rm -it --volume "${PWD}:/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000`
 
-    `docker run --rm -it --volume "$(pwd):/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000`
+- for Mac:
 
-  - for Mac M1
-    `docker run --rm -it --volume "$(pwd):/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 --platform linux/amd64 dmartinez05/ruby_rails_postgresql:latest`
+  `docker run --rm -it --volume "$(pwd):/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000`
 
-- Now run the following commands:
+- for Mac M1
+  `docker run --rm -it --volume "$(pwd):/webapp_2vd" -e DATABASE_USER=test_app -e DATABASE_PASSWORD=test_password -p 3000:3000 --platform linux/amd64 dmartinez05/ruby_rails_postgresql:latest`
 
-  `bundle install`
+`cd rails_app`
 
-  `rails webpacker:install`
+Install the app
 
-  `rails db:create`
+`bundle install && rails webpacker:install && rails db:create && db:migrate`
 
-  `rails db:migrate`
+Run the app
+`rails server --binding=0.0.0.0`
 
-- To run the app:
+The application can be seen using a browser and navigating to http://localhost:3000/
 
-  `rails server --binding=0.0.0.0`
+## Environmental Variables/Files
+
+\*\* Add instructions/description if your application requires it.
 
 After Navigating to localhost:3000 on your browser you should see the Web2D homepage.
 
