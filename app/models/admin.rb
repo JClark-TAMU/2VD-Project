@@ -8,7 +8,6 @@ class Admin < ApplicationRecord
                      bio: 'Is a guest'
     ).find_or_create_by!(email: email)
     # Update Profile Image on relogin
-    User.find_by(email: email).update(avatar: avatar_url)
     create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
   end
 end
