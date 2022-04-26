@@ -65,21 +65,7 @@
             </div>
         </section>
 
-        <% if User.find_by(email: current_admin.email) == @portfolio.user %> 
-          | <%= link_to 'To Albums', user_album_path(@portfolio.user) %>
-        <% end %>
-
       </main>
-
-        <footer class="page-footer">
-            <div class="social">
-                <p>2VD socials:</p>
-                <a href="https://discord.gg/YmxbzC79" title="Discord"><i class="fab fa-discord" style="font-size:30px"></i></a>
-                <a href="https://www.facebook.com/groups/926735031021170/" title="Facebook"><i class="fab fa-facebook-f" style="font-size:30px"></i></a>
-                <a href="https://www.instagram.com/tamu_2vd/" title="Instagram"><i class="fab fa-instagram" style="font-size:30px"></i></a>
-                <a href="https://twitter.com/2vdTamu" title="Twitter"><i class="fab fa-twitter" style="font-size:30px"></i></a>
-            </div>
-        </footer>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>

@@ -41,13 +41,19 @@
         </div>
       </div>
 
-      <% if User.find_by(email: current_admin.email).isAdmin %> 
+      <br>
+      <div class="col-auto">
+        <label for="avatar_url">Avatar</label>
+        <input class="form-control" type = "text" id = "avatar_url" name = "user[avatar]" value = "<%= @user.avatar %>">
+      </div>
+
+      <% if User.find_by(email: current_admin.email).isAdmin %>  
       <br>
         <div class="field">
           <%= form.label :isAdmin, "Admin" %>
           <%= form.check_box :isAdmin %>
         </div>
-      <% end %> 
+      <% end %>  
 
       <br>
       <div class="col-auto">
