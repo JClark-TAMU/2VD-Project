@@ -6,15 +6,11 @@ Web2D is a organizational community event page and portfolio website for the TAM
 
 ## Useful Rails Commands
 
-`rails scaffold`
+`rails scaffold` can be used to autogenerate tables and migrations.
 
 `Keep on adding to this`
 
 `rails g controller <route> <name>`
-
-## Executing the Code
-
-- Clone the repo on your local machine:
 
 ## Requirements
 
@@ -73,18 +69,30 @@ then,
 
 Install the app
 
-`bundle install && rails webpacker:install && rails db:create && db:migrate`
+`bundle install && rails webpacker:install && rails db:create && db:migrate && db:seed`
 
 Run the app
 `rails server --binding=0.0.0.0`
 
-The application can be seen using a browser and navigating to http://localhost:3000/
+The application can be seen using a browser and navigating to http://localhost:3000/. Heroku should automatically do every needed step on a successful deployment.
 
 ## Environmental Variables/Files
 
-\*\* Add instructions/description if your application requires it.
+This application requires five configuration variables. These can be configurated within the development.rb file for the development side, or the 'config vars' section in the heroku settings panel for the production side. Here is the required variables:
 
-After Navigating to localhost:3000 on your browser you should see the Web2D homepage.
+  `AWS_ACCESS_KEY_ID` is the key for the s3 bucket
+
+  `AWS_SECRET_ACCESS_KEY` is the secret key for the s3 bucket
+
+  `S3_BUCKET_NAME` is the name for the s3 bucket
+
+  `GOOGLE_OAUTH_CLIENT_ID` is the key for the Google OAuth service
+
+  `GOOGLE_OAUTH_CLIENT_SECRET` is the secret key for the Google OAuth service
+
+The first three variables come from the AWS portal, and allow the application to store submitted images into the bucket. The latter two variables allow for the authentication service to go through Google OAuth, and can be acquired from the Google Cloud Platform under credentials.
+
+When locally testing, navigating to localhost:3000 on your browser you should see the Web2D homepage. Note that the rspec testing suite uses mock versions of both of these services, so keys are not needed for the testing environment.
 
 ## Deploying the Code
 
@@ -103,6 +111,8 @@ Currently, the CI process for this app is running these three tests:
   `rubocop` for a linter
   
 In terms of the CD process, the two current apps, staging and production, are connected to the branches dev and main respectively. Staging automatically deploys the newest dev commit, no matter on if the CI passed. Production will only automatically deploy the main branch if it is passing the CI.
+
+Currently, all tests are disabled on the main and dev branches due to a conflict between rspec and bootstrap's ajax. All tests have recently passed on the no-bootstrap branch.
 
 Staging: https://web2d-staging.herokuapp.com/
 Production: https://web2d.herokuapp.com/
