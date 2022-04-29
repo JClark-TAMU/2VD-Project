@@ -127,16 +127,6 @@ RSpec.describe(Image, type: :model) do
                             )
   end
 
-  it 'does not save without a title' do
-    subject.title = nil
-    expect(subject).not_to(be_valid)
-  end
-
-  it 'does not save without a caption' do
-    subject.caption = nil
-    expect(subject).not_to(be_valid)
-  end
-
   it 'does not save without a link' do
     subject.imageLink = nil
     expect(subject).not_to(be_valid)
